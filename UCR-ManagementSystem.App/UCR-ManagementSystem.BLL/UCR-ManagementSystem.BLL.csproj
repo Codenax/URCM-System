@@ -39,10 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\DepartmentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BLL\" />
+    <ProjectReference Include="..\UCR-ManagementSystem.DAL\UCR-ManagementSystem.DAL.csproj">
+      <Project>{ded20abc-a894-43d4-a616-4a460385733b}</Project>
+      <Name>UCR-ManagementSystem.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCR-ManagementSystem.Models\UCR-ManagementSystem.Models.csproj">
+      <Project>{2cbad2b5-03ee-4351-b176-cbdb7d1b01b0}</Project>
+      <Name>UCR-ManagementSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

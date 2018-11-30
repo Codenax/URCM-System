@@ -38,6 +38,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -77,7 +84,64 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\bootstrap-multiselect.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\datepicker3.css" />
+    <Content Include="css\default.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\modernizr.js" />
+    <Content Include="css\morris.css" />
+    <Content Include="css\theme-custom.css" />
+    <Content Include="css\theme.css" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\examples.dashboard.js" />
+    <Content Include="Scripts\gauge.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Scripts\jquery.appear.js" />
+    <Content Include="Scripts\jquery.browser.mobile.js" />
+    <Content Include="Scripts\jquery.easypiechart.js" />
+    <Content Include="Scripts\jquery.flot.categories.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.pie.js" />
+    <Content Include="Scripts\jquery.flot.resize.js" />
+    <Content Include="Scripts\jquery.flot.tooltip.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.placeholder.js" />
+    <Content Include="Scripts\jquery.sparkline.js" />
+    <Content Include="Scripts\jquery.ui.touch-punch.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.vmap.africa.js" />
+    <Content Include="Scripts\jquery.vmap.asia.js" />
+    <Content Include="Scripts\jquery.vmap.australia.js" />
+    <Content Include="Scripts\jquery.vmap.europe.js" />
+    <Content Include="Scripts\jquery.vmap.js" />
+    <Content Include="Scripts\jquery.vmap.north-america.js" />
+    <Content Include="Scripts\jquery.vmap.sampledata.js" />
+    <Content Include="Scripts\jquery.vmap.south-america.js" />
+    <Content Include="Scripts\jquery.vmap.world.js" />
+    <Content Include="Scripts\liquid.meter.js" />
+    <Content Include="Scripts\magnific-popup.js" />
+    <Content Include="Scripts\morris.js" />
+    <Content Include="Scripts\nanoscroller.js" />
+    <Content Include="Scripts\raphael.js" />
+    <Content Include="Scripts\snap.svg.js" />
+    <Content Include="Scripts\theme.custom.js" />
+    <Content Include="Scripts\theme.init.js" />
+    <Content Include="Scripts\theme.js" />
     <Content Include="theme\octopus\allocateClassrooms.html" />
     <Content Include="theme\octopus\courseAssignToTeacher.html" />
     <Content Include="theme\octopus\css\bootstrap-multiselect.css" />
@@ -151,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,6 +224,9 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Department\SaveDepartment.cshtml" />
+    <Content Include="Views\Department\ShowDepartment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -168,8 +236,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UCR-ManagementSystem.BLL\UCR-ManagementSystem.BLL.csproj">
+      <Project>{e69b5ac8-5ae9-46c8-80d2-e0221c1b37fc}</Project>
+      <Name>UCR-ManagementSystem.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCR-ManagementSystem.DAL\UCR-ManagementSystem.DAL.csproj">
+      <Project>{ded20abc-a894-43d4-a616-4a460385733b}</Project>
+      <Name>UCR-ManagementSystem.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCR-ManagementSystem.Models\UCR-ManagementSystem.Models.csproj">
+      <Project>{2cbad2b5-03ee-4351-b176-cbdb7d1b01b0}</Project>
+      <Name>UCR-ManagementSystem.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
