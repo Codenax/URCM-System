@@ -10,10 +10,10 @@ namespace UCR_ManagementSystem.Models.Models
     public class Department
 
     {
-
-        public int Id { get; set; }
-        public int Code { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public int DepartmentId { get; set; }
+        public int DepartmentCode { get; set; }
+        public string DepartmentName { get; set; }
 
         [NotMapped]
         public List<Department> DepartmentList { get; set; }

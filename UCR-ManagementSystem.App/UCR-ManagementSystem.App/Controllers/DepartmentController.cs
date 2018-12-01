@@ -108,14 +108,6 @@ namespace UCR_ManagementSystem.App.Controllers
 
 
 
-
-
-
-
-
-
-
-
             //string message = "<h1> Welcome to Employee Create Page </h1>";
             //message += "<br />";
             //DepartmentManager departmentManager = new DepartmentManager();

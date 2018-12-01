@@ -8,18 +8,13 @@ using UCR_ManagementSystem.Models.Models;
 
 namespace UCR_ManagementSystem.DAL.DAL
 {
-    public class DepartmentDAL
+   public class CoueseTeacherDAL
     {
-
         UCRMSystemDbContext db = new UCRMSystemDbContext();
-        public bool Add(Department department)
+        public bool Add(Course course)
         {
-            db.Departments.Add(department);
+            db.Courses.Add(course);
             return db.SaveChanges() > 0;
-        }
-        public List<Department> GetAll()
-        {
-            return db.Departments.ToList();
         }
     }
 }
