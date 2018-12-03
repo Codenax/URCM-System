@@ -1,58 +1,8 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!doctype html>
-<html class="fixed">
-<head>
 
-    <!-- Basic -->
-    <meta charset="UTF-8">
-
-    <title>University Course & Result Management System Dashboard</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!-- Web Fonts  -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
-    <!-- Vendor CSS -->
-    <link href="~/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/css/font-awesome.css" rel="stylesheet" />
-    <link href="css/magnific-popup.css" rel="stylesheet" />
-    <link href="~/css/datepicker3.css" rel="stylesheet" />
-    <link href="~/css/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
-    <link href="~/css/bootstrap-multiselect.css" rel="stylesheet" />
-    <link href="~/css/morris.css" rel="stylesheet" />
-    <link href="~/css/theme.css" rel="stylesheet" />
-    <link href="~/css/default.css" rel="stylesheet" />
-    <link href="~/css/theme-custom.css" rel="stylesheet" />
-    <script src="~/css/modernizr.js"></script>
-</head>
-<body>
-    <section class="body">
-
-        <!-- start: header -->
-        <header class="header">
-            <div class=" col-sm-3">
-                <div class="logo-container">
-                    <a href="../" class="logo">
-                        <img src="logor.png" height="50" />
-                    </a>
-                    <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
-                        <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
-                    </div>
-                </div>
-            </div>
-            <div class=" col-sm-9">
-                <h1 class="logo" style="text-align: center; font-weight:bold; color: #34495E;">University Course & Result Management System</h1>
-            </div>
-
-        </header>
-        <!-- end: header -->
-
-        <div class="inner-wrapper">
             <!-- start: sidebar -->
             <aside id="sidebar-left" class="sidebar-left">
 
@@ -146,6 +96,8 @@
                 </div>
             </aside>
             <!-- end: sidebar -->
+
+             <!-- start: Content-body -->
             <section role="main" class="content-body">
                 <header class="page-header">
                     <h2>View All Department</h2>
@@ -204,78 +156,4 @@
                 </div>
                 <!-- end: page -->
             </section>
-
-        </div>
-
-        <aside id="sidebar-right" class="sidebar-right">
-            <div class="nano">
-                <div class="nano-content">
-                    <a href="#" class="mobile-close visible-xs">
-                        Collapse <i class="fa fa-chevron-right"></i>
-                    </a>
-                    <div class="sidebar-right-wrapper">
-                        <div class="sidebar-widget widget-calendar">
-                            <h6>Upcoming Tasks</h6>
-                            <div data-plugin-datepicker data-plugin-skin="dark"></div>
-                            <ul>
-                                <li>
-                                    <time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-                                    <span>Company Meeting</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <footer class="panel-footer" style="background-color: #34495E;text-align:center">
-            <div class="row">
-                <div class="col-md-3">
-
-                </div>
-                <div class="col-md-9">
-                    <h6 style="color: #ABB4BE">&copy; Green Wave IT Solutions </h6>
-                </div>
-            </div>
-
-        </footer>
-    </section>
-
-    <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/jquery.browser.mobile.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/nanoscroller.js"></script>
-    <script src="~/Scripts/bootstrap-datepicker.js"></script>
-    <script src="~/Scripts/magnific-popup.js"></script>
-    <script src="~/Scripts/jquery.placeholder.js"></script>
-    <script src="~/Scripts/jquery-ui-1.10.4.custom.js"></script>
-    <script src="~/Scripts/jquery.ui.touch-punch.js"></script>
-    <script src="~/Scripts/jquery.appear.js"></script>
-    <script src="~/Scripts/bootstrap-multiselect.js"></script>
-    <script src="~/Scripts/jquery.easypiechart.js"></script>
-    <script src="~/Scripts/jquery.flot.js"></script>
-    <script src="~/Scripts/jquery.flot.tooltip.js"></script>
-    <script src="~/Scripts/jquery.flot.pie.js"></script>
-    <script src="~/Scripts/jquery.flot.categories.js"></script>
-    <script src="~/Scripts/jquery.flot.resize.js"></script>
-    <script src="~/Scripts/jquery.sparkline.js"></script>
-    <script src="~/Scripts/raphael.js"></script>
-    <script src="~/Scripts/morris.js"></script>
-    <script src="~/Scripts/gauge.js"></script>
-    <script src="~/Scripts/snap.svg.js"></script>
-    <script src="~/Scripts/liquid.meter.js"></script>
-    <script src="~/Scripts/jquery.vmap.js"></script>
-    <script src="~/Scripts/jquery.vmap.sampledata.js"></script>
-    <script src="~/Scripts/jquery.vmap.world.js"></script>
-    <script src="~/Scripts/jquery.vmap.africa.js"></script>
-    <script src="~/Scripts/jquery.vmap.asia.js"></script>
-    <script src="~/Scripts/jquery.vmap.australia.js"></script>
-    <script src="~/Scripts/jquery.vmap.europe.js"></script>
-    <script src="~/Scripts/jquery.vmap.north-america.js"></script>
-    <script src="~/Scripts/jquery.vmap.south-america.js"></script>
-    <script src="~/Scripts/theme.js"></script>
-    <script src="~/Scripts/theme.custom.js"></script>
-    <script src="~/Scripts/theme.init.js"></script>
-    <script src="~/Scripts/examples.dashboard.js"></script>
-</body>
-</html>
+             <!-- end: Content-body -->

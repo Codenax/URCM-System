@@ -8,6 +8,7 @@ using UCR_ManagementSystem.Models;
 
 using UCR_ManagementSystem.Models.Models;
 using UCR_ManagementSystem.DAL.DAL;
+using UCR_ManagementSystem.App.Models;
 namespace UCR_ManagementSystem.App.Controllers
 {
     public class DepartmentController : Controller
@@ -16,6 +17,7 @@ namespace UCR_ManagementSystem.App.Controllers
         
         // GET: /Department/
 
+       
        DepartmentManager departmentManager = new DepartmentManager();
 
         [HttpGet]
@@ -56,8 +58,8 @@ namespace UCR_ManagementSystem.App.Controllers
                        bool isSaved = departmentManager.Add(department);
                        if (isSaved)
                        {
+                           
                            ViewBag.SMessage = "Department Information Saved Successfully!";
-
                            return View();
                        }
                        else
@@ -92,10 +94,9 @@ namespace UCR_ManagementSystem.App.Controllers
             //{
             //    message = "Failed";
             //}
-
+          
            ViewBag.EMessage = message;
            return View();
-
 
         }
         DepartmentDAL departmentDAL = new DepartmentDAL();
