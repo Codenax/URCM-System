@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Text;
+//using System.Threading.Tasks;
+using System.Data.Entity;
 using UCR_ManagementSystem.DatabaseContexts.DatabaseContext;
 using UCR_ManagementSystem.Models.Models;
 
@@ -19,7 +20,16 @@ namespace UCR_ManagementSystem.DAL.DAL
         }
         public List<Department> GetAll()
         {
-            return db.Departments.ToList();
+            return db.Departments
+                .Include(c => c.Courses)
+                .ToList();
         }
+        //public List<Department> GetAll()
+        //{
+        //    return db.Departments
+        //        .Include(c => c.Employees)
+        //        .ToList();
+        //}
     }
+
 }

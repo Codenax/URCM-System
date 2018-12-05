@@ -21,5 +21,10 @@ namespace UCR_ManagementSystem.BLL.BLL
         //    departmentDAL.GetAll();
         //    return true;
         //}
-   }  
+
+        public object GetAll()
+        {
+          return  departmentDAL.GetAll();
+        }
+    }  
 }

@@ -11,11 +11,20 @@ namespace UCR_ManagementSystem.BLL.BLL
    public class CourseTeacherManager
     {
         CoueseTeacherDAL coueseTeacherDAL = new CoueseTeacherDAL();
+
+        ///----Save Course----///
         public bool Add(Course course)
         {
             bool isSaved = coueseTeacherDAL.Add(course);
             return isSaved;
-
         }
+        ///----Save Course End----///
+        ///----Save Teacher----///
+        public bool Add(Teacher teacher)
+        {
+            bool isSavedT = coueseTeacherDAL.Add(teacher);
+            return isSavedT;
+        }
+        ///----Save Teacher End----///
     }
 }

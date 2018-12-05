@@ -47,6 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext\UCRMSystemDbContext.cs" />
+    <Compile Include="Migrations\201812041617206_jhg.cs" />
+    <Compile Include="Migrations\201812041617206_jhg.Designer.cs">
+      <DependentUpon>201812041617206_jhg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812051304088_caditChange.cs" />
+    <Compile Include="Migrations\201812051304088_caditChange.Designer.cs">
+      <DependentUpon>201812051304088_caditChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812051306319_creditChangeDouble.cs" />
+    <Compile Include="Migrations\201812051306319_creditChangeDouble.Designer.cs">
+      <DependentUpon>201812051306319_creditChangeDouble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812051419144_addTeacherTable.cs" />
+    <Compile Include="Migrations\201812051419144_addTeacherTable.Designer.cs">
+      <DependentUpon>201812051419144_addTeacherTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +86,20 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812041617206_jhg.resx">
+      <DependentUpon>201812041617206_jhg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812051304088_caditChange.resx">
+      <DependentUpon>201812051304088_caditChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812051306319_creditChangeDouble.resx">
+      <DependentUpon>201812051306319_creditChangeDouble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812051419144_addTeacherTable.resx">
+      <DependentUpon>201812051419144_addTeacherTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

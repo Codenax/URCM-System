@@ -17,5 +17,6 @@ namespace UCR_ManagementSystem.DatabaseContexts.DatabaseContext
 
         public DbSet<Department> Departments { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
     }
 }

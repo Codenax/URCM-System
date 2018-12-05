@@ -124,9 +124,9 @@
                         <form method="POST" id="form" class="form-horizontal">
                             <section class="panel-dark">
                                 <header class="panel-heading" style="background-color: #34495E">
-                                    <h2 class="panel-title">Save&ensp;Departments&ensp;Information</h2> <!--save departments information-->
+                                    <h2 class="panel-title">Save&ensp;Course&ensp;Information</h2> <!--save departments information-->
                                     <p class="panel-subtitle">
-                                        Entry Department Code & Department Name.
+                                        Entry Course Information.
                                     </p>
                                 </header>
                                 <div class="panel-body">
@@ -175,7 +175,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </span>
                                                 @*<input type="number" name="CourseCredit" class="form-control" placeholder="eg.: CSS" required />*@
-                                                @Html.TextBoxFor(c => c.CourseCredit, null, new { @class = "form-control", placeholder = "eg.: 3" })
+                                                @Html.TextBoxFor(c => c.CourseCredit, null, new { @class = "form-control", placeholder = "eg.: 03" })
                                                 @Html.ValidationMessageFor(c => c.CourseCredit, null, new { @class = "text-danger" })
 
 
@@ -193,7 +193,7 @@
                                                     <i class="fa fa-edit"></i>
                                                 </span>
                                                 @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
-                                                @Html.TextBoxFor(c => c.CourseDescription, null, new { @class = "form-control", placeholder = "eg.: Description" })
+                                                @Html.TextAreaFor(c => c.CourseDescription,new { @class = "form-control", placeholder = "eg.: Description" })
                                                 @Html.ValidationMessageFor(c => c.CourseDescription, null, new { @class = "text-danger" })
 
 
@@ -201,8 +201,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        @*<label class="col-sm-2 control-label" style="font-weight:bold">Department Name<span class="required">*</span></label>*@
-                                        @Html.LabelFor(c => c.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                                        @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
+                                        @Html.LabelFor(c => c.DepartmentId, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+
+
 
 
                                         <div class="col-sm-10">
@@ -210,16 +212,14 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-edit"></i>
                                                 </span>
-                                                @*<input type="text" name="DepartmentName" class="form-control" placeholder="eg.: CSS" required />*@
-                                                @Html.TextBoxFor(c => c.DepartmentName, null, new { @class = "form-control", placeholder = "eg.: Computer Science" })
-                                                @Html.ValidationMessageFor(c => c.DepartmentName, null, new { @class = "text-danger" })
-
-
-                                             </div>
+                                                @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
+                                                @Html.DropDownListFor(c => c.DepartmentId, Model.DepartmentSelectListItems, "Select...", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(c => c.DepartmentId, null, new { @class = "text-danger" })
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        @*<label class="col-sm-2 control-label" style="font-weight:bold">Semester<span class="required">*</span></label>*@
+                                        @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
                                         @Html.LabelFor(c => c.Semester, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
 
 
@@ -229,11 +229,24 @@
                                                     <i class="fa fa-edit"></i>
                                                 </span>
                                                 @*<input type="number" name="Semester" class="form-control" placeholder="eg.: CSS" required />*@
-                                                @Html.TextBoxFor(c => c.Semester, null, new { @class = "form-control", placeholder = "eg.:6" })
+                                                @*@Html.DropDownListFor(c => c.Semester, Model.DepartmentSelectListItems, "Select...", new { @class = "form-control" })*@
+                                                @Html.DropDownList("Semester", new List<SelectListItem>()
+                                                {
+                                                new SelectListItem {Text = "Semester 1", Value="1"},
+                                                new SelectListItem {Text = "Semester 2", Value="2"},
+                                                new SelectListItem {Text = "Semester 3", Value="3"},
+                                                new SelectListItem {Text = "Semester 4", Value="4"},
+                                                new SelectListItem {Text = "Semester 5", Value="5"},
+                                                new SelectListItem {Text = "Semester 6", Value="6"},
+                                                new SelectListItem {Text = "Semester 7", Value="7"},
+                                                new SelectListItem {Text = "Semester 8", Value="8"}
+                                                }, "Select...", new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(c => c.Semester, null, new { @class = "text-danger" })
-                                             </div>
+
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <footer class="panel-footer" style="background-color: #dfebf7">
                                     <div class="row">

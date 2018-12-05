@@ -14,13 +14,15 @@ namespace UCR_ManagementSystem.Models.Models
         public int CourseId { get; set; }
         public int CourseCode { get; set; }
         public string CourseName { get; set; }
-        public int CourseCredit { get; set; }
+        public double CourseCredit { get; set; }
         public string CourseDescription { get; set; }
-        public string DepartmentName { get; set; }
         public int Semester { get; set; }
+        public int DepartmentId { get; set; }
 
-        [NotMapped]
-        public List<Course> CourseList { get; set; }
+        public Department Department { get; set; }
+
+        //[NotMapped]
+        //public List<Course> CourseList { get; set; }
     }
     
 }

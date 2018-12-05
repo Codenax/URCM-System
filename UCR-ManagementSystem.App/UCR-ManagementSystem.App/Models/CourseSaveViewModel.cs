@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using UCR_ManagementSystem.Models.Models;
 
 namespace UCR_ManagementSystem.App.Models
 {
@@ -20,7 +23,7 @@ namespace UCR_ManagementSystem.App.Models
 
         [Required(ErrorMessage = "Credit Is Required")]
         [Display(Name = "Credit")]   
-        [StringLength(5, MinimumLength = 2, ErrorMessage = "Credit  range  is from 0.5 to 5.0")]
+        [Range(0.5, 5, ErrorMessage = "Credit Range is from 0.5 to 5.0")]
         public double CourseCredit { get; set; }
         [Required(ErrorMessage = "Description Is Required")]
         [Display(Name = "Description")]
@@ -28,10 +31,15 @@ namespace UCR_ManagementSystem.App.Models
 
         [Required(ErrorMessage = "Department Name Is Required")]
         [Display(Name = "Department Name")]
-        public string DepartmentName { get; set; }
+        public int DepartmentId { get; set; }
 
         [Required(ErrorMessage = "Semeste Is Required")]
         [Display(Name = "Semester")]
         public int Semester { get; set; }
+
+
+        public List<Course> CourseList { get; set; }
+        public IEnumerable<SelectListItem> DepartmentSelectListItems { get; set; }
+         
     }
 }

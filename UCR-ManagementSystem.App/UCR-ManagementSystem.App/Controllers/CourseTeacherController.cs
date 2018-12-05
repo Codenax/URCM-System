@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using UCR_ManagementSystem.BLL.BLL;
 using UCR_ManagementSystem.Models;
-
+using System.Data.Entity;
 using UCR_ManagementSystem.Models.Models;
 using UCR_ManagementSystem.DAL.DAL;
 using UCR_ManagementSystem.App.Models;
+using AutoMapper;
 
 namespace UCR_ManagementSystem.App.Controllers
 {
@@ -18,12 +19,24 @@ namespace UCR_ManagementSystem.App.Controllers
         // GET: /CourseTeacher/
 
         CourseTeacherManager courseTeacherManager = new CourseTeacherManager();
+        DepartmentDAL departmentDAL = new DepartmentDAL();
+
+
+
+        ////----------------Save Course---------------/////
         [HttpGet]
         public ActionResult SaveCourse()
         {
-            return View();
-        }
-
+            var model = new CourseSaveViewModel();
+            model.DepartmentSelectListItems = departmentDAL.GetAll()
+                                                .Select(c => new SelectListItem()
+                                                {
+                                                    Value = c.Id.ToString(),
+                                                    Text = c.DepartmentName
+                                                });
+          
+            return View(model);            
+        }        
         [HttpPost]
         public ActionResult SaveCourse(Course course)
         {
@@ -31,24 +44,103 @@ namespace UCR_ManagementSystem.App.Controllers
 
             if (ModelState.IsValid)
             {
+                //var course = Mapper.Map<Course>(model);
+
                 bool isSaved = courseTeacherManager.Add(course);
                 if (isSaved)
                 {
-                    ViewBag.SMessage = "Department Information Saved Successfully!";
-                    return View();
+                    ViewBag.SMessage = "Course Information Saved Successfully!";                
                 }
                 else
                 {
-                    message = "Department Information Saved Failed";
+                    message = "Course Information Saved Failed";
                 }
             }
             else
             {
                 message = "Failed";
             }
-            ViewBag.EMessage = message;
-            return View();
 
+            var model = new CourseSaveViewModel();
+            model.DepartmentSelectListItems = departmentDAL.GetAll()
+                                                .Select(c => new SelectListItem()
+                                                {
+                                                    Value = c.Id.ToString(),
+                                                    Text = c.DepartmentName
+                                                });     
+            ViewBag.EMessage = message;
+            return View(model);
         }
-	}
+
+        ////----------------Save Course End---------------/////
+        ////----------------Save Teacher---------------/////
+
+        [HttpGet]
+        public ActionResult SaveTeacher()
+        {
+            var model = new TeacherSaveViewModel();
+            model.DepartmentSelectListItems = departmentDAL.GetAll()
+                                                .Select(c => new SelectListItem()
+                                                {
+                                                    Value = c.Id.ToString(),
+                                                    Text = c.DepartmentName
+                                                });
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult SaveTeacher(Teacher teacher)
+        {
+            var Fmessage = "";
+
+            if (ModelState.IsValid)
+            {
+                //var course = Mapper.Map<Course>(model);
+
+                bool isSavedT = courseTeacherManager.Add(teacher);
+                if (isSavedT)
+                {
+                    ViewBag.TMessage = "Teacher Information Saved Successfully!";
+                }
+                else
+                {
+                    Fmessage = "Teacher Information Saved Failed";
+                }
+            }
+            else
+            {
+                Fmessage = "Failed";
+            }
+
+            var model = new TeacherSaveViewModel();
+            model.DepartmentSelectListItems = departmentDAL.GetAll()
+                                                .Select(c => new SelectListItem()
+                                                {
+                                                    Value = c.Id.ToString(),
+                                                    Text = c.DepartmentName
+                                                });
+            ViewBag.FMessage = Fmessage;
+            return View(model);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////----------------Save Teacher End---------------/////
+
+
+
+    }
 }
