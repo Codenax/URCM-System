@@ -15,7 +15,7 @@ namespace UCR_ManagementSystem.App.Models
         [Required(ErrorMessage = "Course Code Is Required")]
         [Display(Name = "Course Code")]
         [StringLength(20,MinimumLength = 5, ErrorMessage = "Course Code  must  be  at  least  five  (5)  characters  long.")]
-        public int CourseCode { get; set; }
+        public string CourseCode { get; set; }
 
         [Required(ErrorMessage = "Course Name Is Required")]
         [Display(Name = "Course Name")]
@@ -35,7 +35,7 @@ namespace UCR_ManagementSystem.App.Models
 
         [Required(ErrorMessage = "Semeste Is Required")]
         [Display(Name = "Semester")]
-        public int Semester { get; set; }
+        public string Semester { get; set; }
 
 
         public List<Course> CourseList { get; set; }

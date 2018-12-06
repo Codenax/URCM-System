@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BLL\CourseTeacherManager.cs" />
     <Compile Include="BLL\DepartmentManager.cs" />
+    <Compile Include="BLL\StudentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

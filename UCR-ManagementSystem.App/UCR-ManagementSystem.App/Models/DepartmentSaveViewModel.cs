@@ -15,7 +15,7 @@ namespace UCR_ManagementSystem.App.Models
         [Required(ErrorMessage = "Department Code Is Required")]
         [StringLength(7, MinimumLength = 2, ErrorMessage = "Department Code must be a minimum and maximum length between 2 and 7 characters.")]
         [Display(Name = "Department Code")]
-        public int DepartmentCode { get; set; }
+        public string DepartmentCode { get; set; }
 
 
         [Required(ErrorMessage = "Department Name Is Required")]

@@ -23,9 +23,9 @@ namespace UCR_ManagementSystem.App.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Contact No Is Required")]
-        [Display(Name = "Comtact No")]
+        [Display(Name = "Contact No")]
         [StringLength(11, MinimumLength = 11, ErrorMessage = "Contact No must be 11 characters")]
-        public int ComtactNo { get; set; }
+        public long ContactNo { get; set; }
 
         [Required(ErrorMessage = "Designation Is Required")]
         [Display(Name = "Designation")]

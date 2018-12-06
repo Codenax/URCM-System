@@ -1,10 +1,10 @@
-﻿@model UCR_ManagementSystem.App.Models.TeacherSaveViewModel
+﻿@model UCR_ManagementSystem.App.Models.StudentViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-            <!-- start: sidebar -->
+<!-- start: sidebar -->
 <aside id="sidebar-left" class="sidebar-left">
 
     <div class="sidebar-header">
@@ -38,14 +38,14 @@
                         </ul>
                     </li>
 
-                    <li class="nav-parent nav-expanded nav-active">
+                    <li class="nav-parent">
                         <a>
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Course & Teacher Info</span>
                         </a>
                         <ul class="nav nav-children">
                             <li><a href="saveCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
-                            <li class="nav-active"><a href="saveTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
+                            <li><a href="saveTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
                             <li><a href="courseAssignToTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
                             <li><a href="viewCourseStatics.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
                         </ul>
@@ -61,13 +61,13 @@
                             <li><a href="viewClassScheduleRoomAllocationInformation.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
                         </ul>
                     </li>
-                    <li class="nav-parent">
+                    <li class="nav-parent nav-expanded nav-active">
                         <a>
                             <i class="fa fa-columns" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Reg-Student & Course-Enroll</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="registerStudent.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
+                            <li class="nav-active"><a href="registerStudent.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
                             <li><a href="enrollInaCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
                         </ul>
                     </li>
@@ -101,11 +101,9 @@
 </aside>
 <!-- end: sidebar -->
 
-
-
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Save Teacher</h2>
+        <h2>Student Registration</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -114,13 +112,12 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Course & Teacher Info / Save Teacher</span></li>
+                <li><span>>Reg-Student & Course-Enroll / Register Student</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
         </div>
     </header>
-
     <!-- start: page -////////////////////////////////////--------------------->
     <div class="row">
         <div class="col-md-12">
@@ -135,41 +132,35 @@
                     <div class="panel-body">
                         <div class="form-group">
                             @*<label class="col-sm-2 control-label" style="font-weight:bold">Course Code <span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.TeacherName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-
-
+                            @Html.LabelFor(c => c.StudentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-keyboard-o"></i>
                                     </span>
                                     @* <input type="number" name="CourseCode" class="form-control" placeholder="eg.: 334646534" required />*@
-                                    @Html.TextBoxFor(c => c.TeacherName, null, new { @class = "form-control", placeholder = "eg.: Kamal Uddin Hazari" })
-                                    @Html.ValidationMessageFor(c => c.TeacherName, null, new { @class = "text-danger" })
-
-
+                                    @Html.TextBoxFor(c => c.StudentName, null, new { @class = "form-control", placeholder = "eg.: Kamal Uddin Hazari" })
+                                    @Html.ValidationMessageFor(c => c.StudentName, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             @*<label class="col-sm-2 control-label" style="font-weight:bold">Course Name<span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.Address, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                            @Html.LabelFor(c => c.StudentEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
                                     @*<input type="text" name="CourseName" class="form-control" placeholder="eg.: CSS" required />*@
-                                    @Html.TextAreaFor(c => c.Address,new { @class = "form-control", placeholder = "eg.: Ulipur,Kurigram" })
-                                    @Html.ValidationMessageFor(c => c.Address, null, new { @class = "text-danger" })
-
-
+                                    @Html.TextBoxFor(c => c.StudentEmail, new { @class = "form-control", placeholder = "eg.: jb@hotmail.com" })
+                                    @Html.ValidationMessageFor(c => c.StudentEmail, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             @*<label class="col-sm-2 control-label" style="font-weight:bold">Credit<span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.Email, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                            @Html.LabelFor(c => c.StudentContactNo, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
 
 
                             <div class="col-sm-10">
@@ -178,47 +169,37 @@
                                         <i class="fa fa-edit"></i>
                                     </span>
                                     @*<input type="number" name="CourseCredit" class="form-control" placeholder="eg.: CSS" required />*@
-                                    @Html.TextBoxFor(c => c.Email, null, new { @class = "form-control", placeholder = "eg.: jb@hotmail.com" })
-                                    @Html.ValidationMessageFor(c => c.Email, null, new { @class = "text-danger" })
-
-
+                                    @Html.TextBoxFor(c => c.StudentContactNo, null, new { @class = "form-control", placeholder = "eg.: 0123456789" })
+                                    @Html.ValidationMessageFor(c => c.StudentContactNo, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.ContactNo, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-
-
+                            @Html.LabelFor(c => c.RegData, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
                                     @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
-                                    @Html.TextBoxFor(c => c.ContactNo, null, new { @class = "form-control", placeholder = "eg.: 01734567890" })
-                                    @Html.ValidationMessageFor(c => c.ContactNo, null, new { @class = "text-danger" })
+                                    @*@Html.DatePickerFor(c => c.RegData, "autoclose=true", "todayBtn=true", "todayHighlight=true")*@
+                                    @Html.TextBoxFor(c=>c.RegData, new { @Value = Model.RegData.ToString("dd/MM/yyyy"), @class = "datepicker" })
+                                    @Html.ValidationMessageFor(c => c.RegData, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.Designation, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Course Name<span class="required">*</span></label>*@
+                            @Html.LabelFor(c => c.StudentAddress, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @*<input type="number" name="Semester" class="form-control" placeholder="eg.: CSS" required />*@
-                                    @*@Html.DropDownListFor(c => c.Semester, Model.DepartmentSelectListItems, "Select...", new { @class = "form-control" })*@
-                                    @Html.DropDownList("Designation", new List<SelectListItem>()
-                                                {
-                                                new SelectListItem {Text = "Professor", Value="Professor"},
-                                                new SelectListItem {Text = "Associate Professor", Value="Associate Professor"},
-                                                new SelectListItem {Text = "Senior Lecturer", Value="Senior Lecturer"},
-                                                new SelectListItem {Text = "Lecturer", Value="Lecturer"},
-                                                }, "Select...", new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(c => c.Designation, null, new { @class = "text-danger" })
+                                    @*<input type="text" name="CourseName" class="form-control" placeholder="eg.: CSS" required />*@
+                                    @Html.TextAreaFor(c => c.StudentAddress, new { @class = "form-control", placeholder = "eg.: Ulipur,Kurigram" })
+                                    @Html.ValidationMessageFor(c => c.StudentAddress, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
@@ -236,24 +217,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Course Code <span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.CreditTaken, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-
-
-                            <div class="col-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </span>
-                                    @* <input type="number" name="CourseCode" class="form-control" placeholder="eg.: 334646534" required />*@
-                                    @Html.TextBoxFor(c => c.CreditTaken, null, new { @class = "form-control", placeholder = "eg.: 2234501" })
-                                    @Html.ValidationMessageFor(c => c.CreditTaken, null, new { @class = "text-danger" })
-
-
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <footer class="panel-footer" style="background-color: #dfebf7">
                         <div class="row">
@@ -261,9 +224,9 @@
                                 <input type="submit" class="btn btn-primary" value="Save " />
                             </div>
                             <div class="col-sm-6">
-                                @if (ViewBag.TMessage != null)
+                                @if (ViewBag.SMessage != null)
                                 {
-                                    <h5 style="color: green; font-weight: bold">@ViewBag.TMessage</h5>
+                                    <h5 style="color: green; font-weight: bold">@ViewBag.SMessage</h5>
                                 }
                                 @if (ViewBag.FMessage != null)
                                 {
@@ -279,7 +242,6 @@
     </div>
     <!-- end: page -/////////////////////////////////////----------------------->
 </section>
-
 
 @section Scripts{
 

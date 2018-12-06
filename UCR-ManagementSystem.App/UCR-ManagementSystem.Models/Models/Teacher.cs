@@ -15,7 +15,7 @@ namespace UCR_ManagementSystem.Models.Models
         public string TeacherName { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }
-        public string ComtactNo { get; set; }
+        public long ContactNo { get; set; }
         public string Designation { get; set; }
         public int DepartmentId { get; set; }
         public double CreditTaken { get; set; }

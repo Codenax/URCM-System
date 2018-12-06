@@ -232,14 +232,14 @@
                                                 @*@Html.DropDownListFor(c => c.Semester, Model.DepartmentSelectListItems, "Select...", new { @class = "form-control" })*@
                                                 @Html.DropDownList("Semester", new List<SelectListItem>()
                                                 {
-                                                new SelectListItem {Text = "Semester 1", Value="1"},
-                                                new SelectListItem {Text = "Semester 2", Value="2"},
-                                                new SelectListItem {Text = "Semester 3", Value="3"},
-                                                new SelectListItem {Text = "Semester 4", Value="4"},
-                                                new SelectListItem {Text = "Semester 5", Value="5"},
-                                                new SelectListItem {Text = "Semester 6", Value="6"},
-                                                new SelectListItem {Text = "Semester 7", Value="7"},
-                                                new SelectListItem {Text = "Semester 8", Value="8"}
+                                                new SelectListItem {Text = "Semester 1", Value="Semester 1"},
+                                                new SelectListItem {Text = "Semester 2", Value="Semester 2"},
+                                                new SelectListItem {Text = "Semester 3", Value="Semester 3"},
+                                                new SelectListItem {Text = "Semester 4", Value="Semester 4"},
+                                                new SelectListItem {Text = "Semester 5", Value="Semester 5"},
+                                                new SelectListItem {Text = "Semester 6", Value="Semester 6"},
+                                                new SelectListItem {Text = "Semester 7", Value="Semester 7"},
+                                                new SelectListItem {Text = "Semester 8", Value="Semester 8"}
                                                 }, "Select...", new { @class = "form-control" })
                                                 @Html.ValidationMessageFor(c => c.Semester, null, new { @class = "text-danger" })
 

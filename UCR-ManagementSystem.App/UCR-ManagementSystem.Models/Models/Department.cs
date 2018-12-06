@@ -12,7 +12,7 @@ namespace UCR_ManagementSystem.Models.Models
     {
         [Key]
         public int Id { get; set; }
-        public int DepartmentCode { get; set; }
+        public string DepartmentCode { get; set; }
         public string DepartmentName { get; set; }
 
         public virtual List<Course> Courses { get; set; }

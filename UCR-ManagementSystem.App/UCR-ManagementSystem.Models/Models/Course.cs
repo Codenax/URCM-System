@@ -12,11 +12,11 @@ namespace UCR_ManagementSystem.Models.Models
     {
         [Key]
         public int CourseId { get; set; }
-        public int CourseCode { get; set; }
+        public string CourseCode { get; set; }
         public string CourseName { get; set; }
         public double CourseCredit { get; set; }
         public string CourseDescription { get; set; }
-        public int Semester { get; set; }
+        public string Semester { get; set; }
         public int DepartmentId { get; set; }
 
         public Department Department { get; set; }

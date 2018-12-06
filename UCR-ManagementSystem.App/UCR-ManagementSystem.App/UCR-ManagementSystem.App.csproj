@@ -220,11 +220,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseTeacherController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CourseSaveViewModel.cs" />
     <Compile Include="Models\DepartmentSaveViewModel.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\TeacherSaveViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -237,6 +239,7 @@
     <Content Include="Views\CourseTeacher\SaveCourse.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\CourseTeacher\SaveTeacher.cshtml" />
+    <Content Include="Views\Student\RegStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

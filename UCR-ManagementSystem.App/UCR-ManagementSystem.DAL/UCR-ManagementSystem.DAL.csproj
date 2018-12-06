@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="DAL\CoueseTeacherDAL.cs" />
     <Compile Include="DAL\DepartmentDAL.cs" />
+    <Compile Include="DAL\StudentDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
