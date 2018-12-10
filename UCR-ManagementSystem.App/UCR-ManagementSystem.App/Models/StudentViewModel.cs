@@ -22,8 +22,9 @@ namespace UCR_ManagementSystem.App.Models
         [StringLength(11, MinimumLength = 11, ErrorMessage = "Contact No must be 11 characters")]
         public long StudentContactNo { get; set; }
 
-        [Required(ErrorMessage = "RegData Is Required")]
         [Display(Name = "Data")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime RegData { get; set; }
 
         [Required(ErrorMessage = "Address  Is Required")]

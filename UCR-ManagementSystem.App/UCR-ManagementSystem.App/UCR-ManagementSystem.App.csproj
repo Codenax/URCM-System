@@ -104,6 +104,7 @@
     <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CourseTeacher\CourseTeacher.js" />
     <Content Include="Scripts\examples.dashboard.js" />
     <Content Include="Scripts\gauge.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -224,6 +225,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssignTeacherViewModel.cs" />
     <Compile Include="Models\CourseSaveViewModel.cs" />
     <Compile Include="Models\DepartmentSaveViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
@@ -240,6 +242,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\CourseTeacher\SaveTeacher.cshtml" />
     <Content Include="Views\Student\RegStudent.cshtml" />
+    <Content Include="Views\CourseTeacher\AssignTeacher.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

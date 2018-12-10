@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext\UCRMSystemDbContext.cs" />
-    <Compile Include="Migrations\201812061809390_addTable.cs" />
-    <Compile Include="Migrations\201812061809390_addTable.Designer.cs">
-      <DependentUpon>201812061809390_addTable.cs</DependentUpon>
+    <Compile Include="Migrations\201812081902033_createdatabase.cs" />
+    <Compile Include="Migrations\201812081902033_createdatabase.Designer.cs">
+      <DependentUpon>201812081902033_createdatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,7 +61,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -76,8 +78,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812061809390_addTable.resx">
-      <DependentUpon>201812061809390_addTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812081902033_createdatabase.resx">
+      <DependentUpon>201812081902033_createdatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

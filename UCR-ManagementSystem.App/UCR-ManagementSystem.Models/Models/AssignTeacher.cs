@@ -8,22 +8,23 @@ using System.Threading.Tasks;
 
 namespace UCR_ManagementSystem.Models.Models
 {
-    public class Course
+   public class AssignTeacher
     {
+
         [Key]
+        public int AssignTeacherId { get; set; }
+        public int TeacherId { get; set; }
+        public double CreditTaken { get; set; }
+        public double RemainingCredit{ get; set; }
         public int CourseId { get; set; }
-        public string CourseCode { get; set; }
         public string CourseName { get; set; }
         public double CourseCredit { get; set; }
-        public string CourseDescription { get; set; }
-        public string Semester { get; set; }
         public int DepartmentId { get; set; }
+        public Teacher Teacher { get; set; }
+        //[NotMapped]
+        //public static List<AssignTeacher> GetAllAssignTeacherList();
 
-        public Department Department { get; set; }
-
-        [NotMapped]
-        public static List<Course> CourseList { get; set; }
-       
-    }
-    
+        //[NotMapped]
+        
+    }    
 }

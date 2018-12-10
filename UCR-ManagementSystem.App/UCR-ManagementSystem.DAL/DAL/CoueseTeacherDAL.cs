@@ -21,14 +21,10 @@ namespace UCR_ManagementSystem.DAL.DAL
             
             return db.SaveChanges() > 0;
         }
-        public List<Course> GetAll()
+        public List<Course> CourseGetAll()
         {
             return db.Courses.Include(c => c.Department).ToList();
         }
-        //public List<Employee> GetAll()
-        //{
-        //    return db.Employees.Include(c => c.Department).ToList();
-        //}
 
         ///----Save Course End----///
         ///----Save Teacher----///
@@ -39,6 +35,33 @@ namespace UCR_ManagementSystem.DAL.DAL
             return db.SaveChanges() > 0;
         }
         ///----Save Teacher End----///
+        ///----Save AssignTeacher ---///
+
+        public List<Teacher> TeacherGetAll()
+        {
+            return db.Teachers.Include(c => c.Department).ToList();
+        }
+
+
+        public bool Add(AssignTeacher assignTeacher)
+        {
+            db.AssignTeachers.Add(assignTeacher);
+
+            return db.SaveChanges() > 0;
+        }
+
+        public List<AssignTeacher> AssingTeacherGetAll()
+        {
+            return db.AssignTeachers.Include(c => c.Teacher).ToList();
+        }
+
+
+
+        ///----Save AssignTeacher End ---///
+    
+
+
+
 
     }
 }

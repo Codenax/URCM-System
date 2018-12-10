@@ -184,7 +184,8 @@
                                     </span>
                                     @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
                                     @*@Html.DatePickerFor(c => c.RegData, "autoclose=true", "todayBtn=true", "todayHighlight=true")*@
-                                    @Html.TextBoxFor(c=>c.RegData, new { @Value = Model.RegData.ToString("dd/MM/yyyy"), @class = "datepicker" })
+                                    @*@Html.TextBoxFor(c=>c.RegData, new { @Value = Model.RegData.ToString("dd/MM/yyyy"), @class = "datepicker" })*@
+                                    @Html.EditorFor(c => c.RegData)
                                     @Html.ValidationMessageFor(c => c.RegData, null, new { @class = "text-danger" })
                                 </div>
                             </div>

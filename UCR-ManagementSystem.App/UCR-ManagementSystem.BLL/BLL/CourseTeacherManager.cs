@@ -26,5 +26,13 @@ namespace UCR_ManagementSystem.BLL.BLL
             return isSavedT;
         }
         ///----Save Teacher End----///
+        ///
+
+        public bool Add(AssignTeacher assignTeacher)
+        {
+            bool isSavedT = coueseTeacherDAL.Add(assignTeacher);
+            return isSavedT;
+        }
+
     }
 }

@@ -7,7 +7,7 @@ using UCR_ManagementSystem.App.Models;
 using UCR_ManagementSystem.BLL.BLL;
 using UCR_ManagementSystem.DAL.DAL;
 using UCR_ManagementSystem.Models.Models;
-using System.Web.Mvc;
+
 using System.Data.Entity;
 
 namespace UCR_ManagementSystem.App.Controllers
@@ -26,7 +26,9 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpGet]
         public ActionResult RegStudent()
         {
+            
             var model = new StudentViewModel();
+            model.RegData = DateTime.Now;
             model.DepartmentSelectListItems = departmentDAL.GetAll()
                                                 .Select(c => new SelectListItem()
                                                 {
@@ -61,6 +63,7 @@ namespace UCR_ManagementSystem.App.Controllers
             }
 
             var model = new StudentViewModel();
+            model.RegData = DateTime.Now;
             model.DepartmentSelectListItems = departmentDAL.GetAll()
                                                 .Select(c => new SelectListItem()
                                                 {
