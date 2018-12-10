@@ -22,6 +22,26 @@
             }
         }
     });
+
+    $.ajax({
+        type: "POST",
+        url: "/CourseTeacher/GetCourseByDepartmentId",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(params),
+        success: function (rData) {
+            if (rData != undefined && rData != null && rData != "") {
+                $("#CourseId").empty();
+
+                $("#CourseId").append("<option value=''>Select...</option>");
+  
+
+                $.each(rData, function (k, v) {
+
+                    $("#CourseId").append("<option value='" + v.CourseId + "'>" + v.CourseName + "</option>");
+                });
+            }
+        }
+    });
 });
 
 
@@ -35,8 +55,8 @@ $(document.body).on("change", "#TeacherId", function () {
         $("#RemainingCredit").empty();
 
         $.each(rData, function (k, v) {
-            $("#CreditTaken").val(v.CreditTaken)
-            $("#RemainingCredit").val(v.CreditTaken)
+            $("#CreditTaken").val(v.CreditTeken)
+            $("#RemainingCredit").val(v.RemainingCredit)
             //$("#RemainingCredit").append("<option value='" + v.CreditTaken + "'>" + v.CreditTaken + "</option>");
         });
     });
@@ -59,7 +79,7 @@ $("#CourseId").change(function () {
 
                 $.each(rData, function (k, v) {
                     $("#CourseName").val(v.CourseName)
-                    $("#CourseCredit").val(v.CourseCredit)
+                    $("#AssignCourseCredit").val(v.CourseCredit)
                     //$("#CourseName").append("<option value='" + v.CourseName + "'>" + v.CourseName + "</option>");
                     //$("#CourseCredit").append("<option value='" + v.CourseCredit + "'>" + v.CourseCredit + "</option>");
                 });

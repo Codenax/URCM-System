@@ -8,6 +8,7 @@ namespace UCR_ManagementSystem.App.Models
 {
     public class StudentViewModel
     {
+        public int StudentId { get; set; }
         [Required(ErrorMessage = "Student Name Is Required")]
         [Display(Name = "Student Name")]
         public string StudentName { get; set; }
@@ -33,7 +34,13 @@ namespace UCR_ManagementSystem.App.Models
         [Required(ErrorMessage = "Department Is Required")]
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
         public string RegistrationNumber { get; set; }
+        public int CourseId { get; set; }
+
+        public IEnumerable<SelectListItem> RegistrationNumberList { get; set; }
+
+        public IEnumerable<SelectListItem> CoursetSelectListItems { get; set; }
 
         public IEnumerable<SelectListItem> DepartmentSelectListItems { get; set; }
     }

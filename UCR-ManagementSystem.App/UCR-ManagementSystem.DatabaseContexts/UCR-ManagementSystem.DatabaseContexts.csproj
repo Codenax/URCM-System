@@ -51,6 +51,34 @@
     <Compile Include="Migrations\201812081902033_createdatabase.Designer.cs">
       <DependentUpon>201812081902033_createdatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812101329451_adslfja%3b.cs" />
+    <Compile Include="Migrations\201812101329451_adslfja%3b.Designer.cs">
+      <DependentUpon>201812101329451_adslfja%3b.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101410454_slkdjf%3baslfj%3b33.cs" />
+    <Compile Include="Migrations\201812101410454_slkdjf%3baslfj%3b33.Designer.cs">
+      <DependentUpon>201812101410454_slkdjf%3baslfj%3b33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101927375_deefaf.cs" />
+    <Compile Include="Migrations\201812101927375_deefaf.Designer.cs">
+      <DependentUpon>201812101927375_deefaf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812102003448_sdsfa.cs" />
+    <Compile Include="Migrations\201812102003448_sdsfa.Designer.cs">
+      <DependentUpon>201812102003448_sdsfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812102004455_sdfasfa.cs" />
+    <Compile Include="Migrations\201812102004455_sdfasfa.Designer.cs">
+      <DependentUpon>201812102004455_sdfasfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812102013091_fsdfas.cs" />
+    <Compile Include="Migrations\201812102013091_fsdfas.Designer.cs">
+      <DependentUpon>201812102013091_fsdfas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812102227251_sdjfasljfasfl.cs" />
+    <Compile Include="Migrations\201812102227251_sdjfasljfasfl.Designer.cs">
+      <DependentUpon>201812102227251_sdjfasljfasfl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -80,6 +108,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812081902033_createdatabase.resx">
       <DependentUpon>201812081902033_createdatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101329451_adslfja%3b.resx">
+      <DependentUpon>201812101329451_adslfja%3b.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101410454_slkdjf%3baslfj%3b33.resx">
+      <DependentUpon>201812101410454_slkdjf%3baslfj%3b33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101927375_deefaf.resx">
+      <DependentUpon>201812101927375_deefaf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812102003448_sdsfa.resx">
+      <DependentUpon>201812102003448_sdsfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812102004455_sdfasfa.resx">
+      <DependentUpon>201812102004455_sdfasfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812102013091_fsdfas.resx">
+      <DependentUpon>201812102013091_fsdfas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812102227251_sdjfasljfasfl.resx">
+      <DependentUpon>201812102227251_sdjfasljfasfl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,7 +23,9 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpGet]
        public ActionResult SaveDepartment()
         {
+           
             return View();
+           
         }
 
 
@@ -51,6 +53,7 @@ namespace UCR_ManagementSystem.App.Controllers
                    }
     
            ViewBag.EMessage = message;
+           ModelState.Clear();
            return View();
 
         }

@@ -52,16 +52,10 @@ namespace UCR_ManagementSystem.DAL.DAL
 
         public List<AssignTeacher> AssingTeacherGetAll()
         {
-            return db.AssignTeachers.Include(c => c.Teacher).ToList();
+            return db.AssignTeachers.Include(c=> c.Teacher).ToList();
         }
 
-
-
         ///----Save AssignTeacher End ---///
-    
-
-
-
 
     }
 }

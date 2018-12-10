@@ -131,7 +131,7 @@ namespace UCR_ManagementSystem.App.Controllers
         {
             var model = new AssignTeacherViewModel();
             model.DepartmentSelectListItems2 = courseTeacherDAL.TeacherGetAll().Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.Department.DepartmentName });
-            model.CoursetSelectListItems = courseTeacherDAL.CourseGetAll().Select(c => new SelectListItem() { Value = c.CourseId.ToString(), Text = c.CourseCode });
+            model.CoursetSelectListItems = GetDefaultSelectListItem();
             model.TeachertSelectListItems = GetDefaultSelectListItem();
             model.TeachertInfoListItems = GetTDefaultSelectListItem();
             return View(model);
@@ -155,18 +155,52 @@ namespace UCR_ManagementSystem.App.Controllers
 
         public JsonResult GetTeacherInfoByTeacherId(int teacherTd)
         {
-            var dataList = courseTeacherDAL.TeacherGetAll().Where(c => c.TeacherId == teacherTd).ToList();
-            var jsonData = dataList.Select(c => new { c.CreditTaken });
+            //var dataList = courseTeacherDAL.TeacherGetAll().Where(c => c.TeacherId == teacherTd).ToList();
+            CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
+            var teacherGetAll = courseTeacherDAL.TeacherGetAll();
+            var AssignCourseCreditresult = courseTeacherDAL.AssingTeacherGetAll();
+            var gropbySum = AssignCourseCreditresult
+                            .GroupBy(s => new { s.TeacherId })
+                            .Select(g => new
+                            {
+                                TeacherId = g.Key.TeacherId,
+                                AssignCourseCredit = g.Sum(x => x.AssignCourseCredit)
+                            });
+            var result = from e in teacherGetAll
+                         join d in gropbySum
+                         on e.TeacherId equals d.TeacherId into eGroup
+                         from d in eGroup.DefaultIfEmpty()
+                         select new
+                         {
+                             TeacherId = e.TeacherId,
+                             TeacherName = e.TeacherName,
+                             CreditTeken = e.CreditTaken,
+                             AssignCreditTeken = d == null ? 0 : d.AssignCourseCredit,
+                         };
+            var newResult = result.Select(n => new
+            {
+                TeacherId = n.TeacherId,
+                TeacherName = n.TeacherName,
+                CreditTeken = n.CreditTeken,
+                AssignCredit = n.AssignCreditTeken,
+                RemainingCredit = n.CreditTeken - n.AssignCreditTeken,
+            });
+            var finalResult = newResult.Where(c => c.TeacherId == teacherTd).ToList();
+            var jsonData = finalResult.Select(c => new { c.CreditTeken,c.RemainingCredit});
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetCourseCourseId(int courseId)
         {
             var dataList = courseTeacherDAL.CourseGetAll().Where(c => c.CourseId == courseId).ToList();
             var jsonData = dataList.Select(c => new { c.CourseId, c.CourseCode, c.CourseCredit, c.CourseName });
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult GetCourseByDepartmentId(int departmentId)
+        {
+            var dataList = courseTeacherDAL.CourseGetAll().Where(c => c.DepartmentId == departmentId).ToList();
+            var jsonData = dataList.Select(c => new { c.CourseId, c.CourseCode, c.CourseCredit, c.CourseName });
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public ActionResult AssignTeacher(AssignTeacher assignTeacher)
         {
@@ -189,7 +223,6 @@ namespace UCR_ManagementSystem.App.Controllers
             {
                 message = "Failed";
             }
-
             var model = new AssignTeacherViewModel();
             model.DepartmentSelectListItems2 = courseTeacherDAL.TeacherGetAll().Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.Department.DepartmentName });
             model.CoursetSelectListItems = courseTeacherDAL.CourseGetAll().Select(c => new SelectListItem() { Value = c.CourseId.ToString(), Text = c.CourseCode });
@@ -197,7 +230,6 @@ namespace UCR_ManagementSystem.App.Controllers
             model.TeachertInfoListItems = GetTDefaultSelectListItem();
             ViewBag.EMessage = message;
             return View(model);
- 
         }
         ////----------------Save Asing Teacher end ---------------/////
 

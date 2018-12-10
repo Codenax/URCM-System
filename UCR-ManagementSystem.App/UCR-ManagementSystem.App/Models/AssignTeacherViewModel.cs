@@ -20,7 +20,7 @@ namespace UCR_ManagementSystem.App.Models
         public string CourseName { get; set; }
         public string Semester { get; set; }
         public string AssignTo { get; set; }
-        public double CourseCredit { get; set; }
+        public double AssignCourseCredit { get; set; }
         public int DepartmentId { get; set; }
         public IEnumerable<SelectListItem> DepartmentSelectListItems2 { get; set; }
         public IEnumerable<SelectListItem> TeachertSelectListItems { get; set; }

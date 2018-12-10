@@ -21,9 +21,8 @@ namespace UCR_ManagementSystem.Models.Models
         public int DepartmentId { get; set; }
         public double CreditTaken { get; set; }
         public Department Department { get; set; }
-
         [NotMapped]
         public List<Teacher> TeacherList { get; set; }
-
+        
     }   
 }
