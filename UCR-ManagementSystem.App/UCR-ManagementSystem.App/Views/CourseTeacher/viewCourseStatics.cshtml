@@ -154,35 +154,15 @@
                                     </header>
                                     <div class="panel-body">
                                         <div class="table-responsive">
-                                            <table id="gridTbl" class="table table-bordered mb-none">
+                                            <table id="blogTable" class="table table-bordered mb-none">
                                                 <thead>
-                                                    <tr style="background-color:#dfebf7">
-                                                        <th>SL</th>
-                                                        <th >Course Code</th>
-                                                        <th >Course Code</th>
-                                                        <th >Course Code</th>
-                                                        <th >Course Code</th>
-                                                        @*<th>Course Name</th>
-                                                        <th>Semester</th>
-                                                        <th>Assigned To</th>
-                                                    </tr>*@
+                                                    <tr style="background-color:#dfebf7">                                                       
+                                                        <th>Course Code</th>
+                                                        <th>Course Name</th>
+                                                        <th>Course Semester</th>
+                                                        <th>Assing To</th>
                                                 </thead>
-                                                @*<tbody>
-                                                    @{ int i = 1; }
-                                                    @if (Model != null && ViewBag.EmployeeDetailsGrid != null && ViewBag.EmployeeDetailsGrid > 0)
-                                                    {
-                                                        foreach (var department in ViewBag.EmployeeDetailsGrid)
-                                                        {
-                                                            <tr>
-                                                                <td><label>@i</label> @{ i++; }</td>
-                                                                <td>@department.CourseCode</td>
-                                                                <td>@department.CourseName</td>
-                                                                <td>@department.Semester</td>
-                                                                <td>@department.AssignTo</td>
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>*@
+                                                <tbody></tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -196,14 +176,37 @@
     </div>
 
 
-
     <!-- end: page -------------///////////////////////////----------------------->
 </section>
 @section Scripts{
-
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/CourseTeacher/ViewCourseStatic.js"></script>
-    @*<script src="~/Scripts/CourseTeacher/CourseTeacher.js"></script>*@
+    @*<script>
+        $(document).ready(function () {
+            $("#DepartmentId").change(function () {
+                $('#blogTable tbody').empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetCourseInfo")',
+                    datatype: JSON,
+                    data: { 'departmentId': $("#DepartmentId").val() },
+                    success: function (data) {
+                        $('#blogTable tbody').empty();
+                        $.each(data, function (i, item) {
+                            var rows = "<tr>"
+                    + "<td>" + item.CourseCode + "</td>"
+                    + "<td>" + item.CourseName + "</td>"
+                    + "<td>" + item.Semester + "</td>"
+                    + "<td>" + item.AssignTo + "</td>"
+                    + "</tr>";
+                            $('#blogTable tbody').append(rows);
+                        });
+                    },
+                    error: function (data) { }
+                });
+            });
+        });
+    </script>*@
 }

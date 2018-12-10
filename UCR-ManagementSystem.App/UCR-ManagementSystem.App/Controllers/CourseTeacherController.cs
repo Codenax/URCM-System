@@ -213,7 +213,7 @@ namespace UCR_ManagementSystem.App.Controllers
 
         public JsonResult GetCourseInfo(int departmentId)
         {
-
+            //List<Blog> blogs = new List<Blog>();
             var result = from e in courseTeacherDAL.CourseGetAll()
                          join d in courseTeacherDAL.AssingTeacherGetAll()
                          on e.CourseId equals d.CourseId into eGroup
