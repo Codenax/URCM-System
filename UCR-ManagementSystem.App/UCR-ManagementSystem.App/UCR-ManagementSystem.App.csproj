@@ -105,6 +105,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\CourseTeacher\CourseTeacher.js" />
+    <Content Include="Scripts\CourseTeacher\ViewCourseStatic.js" />
     <Content Include="Scripts\examples.dashboard.js" />
     <Content Include="Scripts\gauge.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -243,6 +244,7 @@
     <Content Include="Views\CourseTeacher\SaveTeacher.cshtml" />
     <Content Include="Views\Student\RegStudent.cshtml" />
     <Content Include="Views\CourseTeacher\AssignTeacher.cshtml" />
+    <Content Include="Views\CourseTeacher\viewCourseStatics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

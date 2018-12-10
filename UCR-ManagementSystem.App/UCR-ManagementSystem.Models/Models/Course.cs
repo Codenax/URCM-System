@@ -20,7 +20,7 @@ namespace UCR_ManagementSystem.Models.Models
         public int DepartmentId { get; set; }
 
         public Department Department { get; set; }
-
+        //public AssignTeacher AssignTeacher { get; set; }
         [NotMapped]
         public static List<Course> CourseList { get; set; }
        

@@ -13,6 +13,7 @@ namespace pratice
         
         static void Main(string[] args)
         {
+            int departmentId = 3;
             CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
             var result = from e in  courseTeacherDAL.CourseGetAll()
                          join d in courseTeacherDAL.AssingTeacherGetAll()
@@ -20,15 +21,21 @@ namespace pratice
                          from d in eGroup.DefaultIfEmpty()
                          select new
                          {
+                             DepartmentId = e.DepartmentId,
+                             DepartmentName = e.Department.DepartmentName,
                              CourseCode = e.CourseCode,
                              CourseName = e.CourseName,
                              Semester = e.Semester,
                              AssignTo = d == null ? "Not Assigned Yet" : d.Teacher.TeacherName
                              //AssignTo = d == null? "no" | d.TeacherId
                          };
-            foreach (var v in result) 
+            var dataList = result.Where(c => c.DepartmentId == departmentId).ToList();
+            var jsonData = dataList.Select(c => new {c.DepartmentId, c.DepartmentName, c.CourseCode, c.CourseName, c.Semester, c.AssignTo });
+
+
+            foreach (var v in jsonData) 
             {
-                Console.WriteLine(v.CourseCode + "\t" + v.CourseName + "\t" + v.Semester + "\t" + v.AssignTo);
+                Console.WriteLine(v.DepartmentId + "\t" + v.DepartmentName + v.CourseCode + "\t" + v.CourseName + "\t" + v.Semester + "\t" + v.AssignTo);
             }
             Console.ReadKey();
             //var result = courseTeacherDAL.CourseGetAll()

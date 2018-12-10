@@ -132,10 +132,8 @@ namespace UCR_ManagementSystem.App.Controllers
             var model = new AssignTeacherViewModel();
             model.DepartmentSelectListItems2 = courseTeacherDAL.TeacherGetAll().Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.Department.DepartmentName });
             model.CoursetSelectListItems = courseTeacherDAL.CourseGetAll().Select(c => new SelectListItem() { Value = c.CourseId.ToString(), Text = c.CourseCode });
-            //model.EmployeeList = _repository.GetAll();
             model.TeachertSelectListItems = GetDefaultSelectListItem();
             model.TeachertInfoListItems = GetTDefaultSelectListItem();
-            //model.EmployeeEducationSelectListItems = GetDefaultSelectListItem();
             return View(model);
         }
 
@@ -149,7 +147,6 @@ namespace UCR_ManagementSystem.App.Controllers
         }
         public JsonResult GetTeacherByDepartmentId(int departmentId)
         {
-            //var dataList = _repository.Get(c=>c.DepartmentId==departmentId).Tolist();
             var dataList = courseTeacherDAL.TeacherGetAll();
             dataList = dataList.Where(c => c.DepartmentId == departmentId).ToList();
             var jsonData = dataList.Select(c => new { c.TeacherId, c.TeacherName });
@@ -177,7 +174,6 @@ namespace UCR_ManagementSystem.App.Controllers
 
             if (ModelState.IsValid)
             {
-                //var course = Mapper.Map<Course>(model);
 
                 bool isSaved = courseTeacherManager.Add(assignTeacher);
                 if (isSaved)
@@ -203,56 +199,41 @@ namespace UCR_ManagementSystem.App.Controllers
             return View(model);
  
         }
+        ////----------------Save Asing Teacher end ---------------/////
 
+        ////------CourseInformetionShow In Table----------------////
 
+        [HttpGet]
+        public ActionResult viewCourseStatics()
+        {
+            var model = new AssignTeacherViewModel();
+            model.DepartmentSelectListItemsViewCourseStatics = courseTeacherDAL.CourseGetAll().Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.Department.DepartmentName });
+            return View(model);
+        }
 
+        public JsonResult GetCourseInfo(int departmentId)
+        {
 
-        //private IEnumerable<SelectListItem> GetDefaultSelectListItem()
-        //{
-        //    return new List<SelectListItem> { new SelectListItem { Value = "", Text = "---Select---" } };
-        //}
+            var result = from e in courseTeacherDAL.CourseGetAll()
+                         join d in courseTeacherDAL.AssingTeacherGetAll()
+                         on e.CourseId equals d.CourseId into eGroup
+                         from d in eGroup.DefaultIfEmpty()
+                         select new
+                         {
+                             DepartmentId = e.DepartmentId,
+                             DepartmentName = e.Department.DepartmentName,
+                             CourseCode = e.CourseCode,
+                             CourseName = e.CourseName,
+                             Semester = e.Semester,
+                             AssignTo = d == null ? "Not Assigned Yet" : d.Teacher.TeacherName
+                         };
+            var dataList = result.Where(c => c.DepartmentId == departmentId).ToList();
+            var jsonData = dataList.Select(c => new { c.CourseCode, c.CourseName, c.Semester, c.AssignTo });
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
 
-
-        //[HttpPost]
-        //public ActionResult Create(EmployeeCreateViewModel model)
-        //{
-        //    var msg = "Failed";
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        var employee = Mapper.Map<Employee>(model);
-
-        //        bool isAdded = _repository.Add(employee);
-        //        if (isAdded)
-        //        {
-        //            ViewBag.SMsg = "Saved";
-
-        //        }
-        //        else
-        //        {
-        //            ViewBag.EMsg = "Failed"; ;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        msg = AppUtility.GetModelStateError(ModelState);
-        //        ViewBag.EMsg = msg;
-        //    }
-        //    model.DepartmentSelectListItems = _departmentRepository.GetAll()
-        //                                        .Select(c => new SelectListItem()
-        //                                        {
-        //                                            Value = c.Id.ToString(),
-        //                                            Text = c.Name
-        //                                        });
-        //    model.EmployeeList = _repository.GetAll();
-
-        //    return View(model);
-        //}
-
-
-        ////----------------Save Asing Teacher End---------------/////
-
-
+        }
+        
+        ///------CourseInformetionShow In Table end----------------////
 
     }
 }
