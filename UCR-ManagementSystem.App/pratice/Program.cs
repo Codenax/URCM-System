@@ -17,19 +17,68 @@ namespace pratice
 
             CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
             StudentDAL studentDAL = new StudentDAL();
+            var query = from s in studentDAL.SaveStudentResultGetAll()
+                        join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
+                        //where s.StudentId == id
+                        select new
+                        {
+                            StudentId = s.StudentId,
+                            RegistrationNumber = s.Student.RegistrationNumber,
+                            StudentName = s.StudentName,
+                            StudentEmail = s.StudentEmail,
+                            DepartmentName = s.DepartmentName,
+                            CourseCode = c.CourseCode,
+                            CourseName =c.CourseName,
+                            GradeLatter = s.GradeLetter,
+                        };
 
-            var result = studentDAL.StudentEnrollListGetAll()
-                .Select(n => new
-                {
-                    studentId= n.StudentId,
-                    studentName = n.Student.StudentName,
-                    registretionNo = n.Student.RegistrationNumber
-                });
-            foreach (var v in result)
+            foreach (var v in query)
             {
-                Console.WriteLine(v.studentId + "\t" + v.studentName +"\t"+ v.registretionNo);
+                Console.WriteLine(v.StudentId + "\t" + v.RegistrationNumber + "\t"
+                                  + v.StudentName + "\t" + v.StudentEmail + "\t"
+                                  + v.DepartmentName + "\t" + v.CourseCode + "\t"
+                                  + v.CourseName + "\t" + v.GradeLatter + "\t"
+                                  );
             }
             Console.ReadKey();
+
+
+
+            //var query = from s in studentDAL.StudentEnrollListGetAll()
+            //            join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
+            //            //where s.StudentId == id
+            //            select new
+            //            {
+            //                StudentId = s.StudentId,
+            //                StudentName = s.StudentName,
+            //                DepartmentName = s.DepartmentName,
+            //                CourseId = s.CourseId,
+            //                CourseIdC = c.CourseId,
+            //                CourseNameC = c.CourseName,
+            //                DepartmentNameC = c.Department.DepartmentName,
+                            
+            //            };
+
+            //foreach (var v in query)
+            //{
+            //    Console.WriteLine(v.StudentId + "\t" + v.StudentName + "\t" + v.DepartmentName + "\t" + v.CourseId + "\t" + v.CourseIdC + "\t" + v.CourseNameC + "\t" + v.DepartmentNameC);
+            //}
+            //Console.ReadKey();
+
+
+            //var result = studentDAL.StudentEnrollListGetAll()
+            //    .Select(n => new
+            //    {
+            //        studentId= n.StudentId,
+            //        studentName = n.Student.StudentName,
+            //        registretionNo = n.Student.RegistrationNumber
+            //    });
+            //foreach (var v in result)
+            //{
+            //    Console.WriteLine(v.studentId + "\t" + v.studentName +"\t"+ v.registretionNo);
+            //}
+            //Console.ReadKey();
+
 
             //var query = from s in studentDAL.StudentGetAll()
             //            join c in courseTeacherDAL.CourseGetAll() on s.DepartmentId equals c.DepartmentId

@@ -107,6 +107,14 @@
     <Compile Include="Migrations\201812111725149_addStudentResultTable.Designer.cs">
       <DependentUpon>201812111725149_addStudentResultTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812112014547_add.cs" />
+    <Compile Include="Migrations\201812112014547_add.Designer.cs">
+      <DependentUpon>201812112014547_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812112107523_asfasfkj.cs" />
+    <Compile Include="Migrations\201812112107523_asfasfkj.Designer.cs">
+      <DependentUpon>201812112107523_asfasfkj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +186,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812111725149_addStudentResultTable.resx">
       <DependentUpon>201812111725149_addStudentResultTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812112014547_add.resx">
+      <DependentUpon>201812112014547_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812112107523_asfasfkj.resx">
+      <DependentUpon>201812112107523_asfasfkj.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

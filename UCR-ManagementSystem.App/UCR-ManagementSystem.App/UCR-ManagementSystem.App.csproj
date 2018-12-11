@@ -107,8 +107,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\CourseTeacher\CourseTeacher.js" />
+    <Content Include="Scripts\CourseTeacher\SaveStudentResult.js" />
     <Content Include="Scripts\CourseTeacher\StudentInfo.js" />
     <Content Include="Scripts\CourseTeacher\ViewCourseStatic.js" />
+    <Content Include="Scripts\CourseTeacher\ViewStudentResult.js" />
     <Content Include="Scripts\Design\bootstrap-datepicker.js" />
     <Content Include="Scripts\examples.dashboard.js" />
     <Content Include="Scripts\gauge.js" />
@@ -257,6 +259,7 @@
     <Content Include="Views\Student\StudentEnrollInaCourse.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Student\SaveStudentResult.cshtml" />
+    <Content Include="Views\Student\StudentResultView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

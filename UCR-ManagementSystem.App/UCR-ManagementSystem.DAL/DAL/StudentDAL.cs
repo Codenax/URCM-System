@@ -48,6 +48,11 @@ namespace UCR_ManagementSystem.DAL.DAL
             return db.SaveChanges() > 0;
         }
 
+        public List<SaveStudentResult> SaveStudentResultGetAll()
+        {
+            return db.SaveStudentResults.Include(c => c.Student).ToList();
+        }
+        ///
          ///-----Save Student result end---////
 
     }

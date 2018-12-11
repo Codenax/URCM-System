@@ -9,13 +9,18 @@ namespace UCR_ManagementSystem.App.Models
 {
     public class SaveStudentResultViewModel
     {
+
+        [Required(ErrorMessage = "Registration Numbers is Required")]
+        [Display(Name = "Student Reg.No.")]
         public int StudentId { get; set; }
-        [Required(ErrorMessage = "Student Name Is Required")]
-        [Display(Name = "Student Name")]
+
+        [Display(Name = "Name")]
         public string StudentName { get; set; }
 
         [Display(Name = "Email ")]
         public string StudentEmail { get; set; }
+
+        [Display(Name = "Department")]
         public string DepartmentName { get; set; }
 
         [Required(ErrorMessage = "Course Is Required")]

@@ -157,9 +157,86 @@ namespace UCR_ManagementSystem.App.Controllers
             model.CoursetSelectListItems = GetDefaultSelectListItem();
             return View(model);
         }
+        public JsonResult GetStudentByEnrollStudentId(int studentId)
+        {
+            var dataList = studentDAL.StudentEnrollListGetAll().Where(c => c.StudentId == studentId).ToList();
+            var jsonData = dataList.Select(c => new { c.StudentName,c.StudentEmail,c.DepartmentName});
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult GetCourseByEnrollStudentId(int studentId)
+        {
+            var queryResult = from s in studentDAL.StudentEnrollListGetAll()
+                        join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
+                        select new
+                        {
+                            StudentId = s.StudentId,
+                            CourseId = s.CourseId,
+                            CourseName = c.CourseName,
+                        };
+            var dataList = queryResult.Where(c => c.StudentId == studentId).ToList();
+            var jsonData = dataList.Select(c => new { c.CourseId, c.CourseName });
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult SaveStudentResult(SaveStudentResult saveStudentResult)
+        {
+            var SSFmessage = "";
+
+            if (ModelState.IsValid)
+            {
+                //var course = Mapper.Map<Course>(model);
+
+                bool isSavedSSR = studentManager.Add(saveStudentResult);
+                if (isSavedSSR)
+                {
+                    ViewBag.SSRmessage = "Student Result Information Saved Successfully!";
+                }
+                else
+                {
+                    SSFmessage = "Student Result Course Information Saved Failed";
+                }
+            }
+            else
+            {
+                SSFmessage = "Failed";
+            }
+            var model = new SaveStudentResultViewModel();
+            model.RegistrationNumberList = studentDAL.StudentEnrollListGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.Student.RegistrationNumber });
+            model.CoursetSelectListItems = GetDefaultSelectListItem();     
+            ViewBag.FMessage = SSFmessage;
+            return View(model);
+        }
 
         ////----------------Save Student result End---------------/////
+        ////----------------Student result View---------------/////
+
+        public ActionResult StudentResultView()
+        {
+            var model = new SaveStudentResultViewModel();
+            model.RegistrationNumberList = studentDAL.SaveStudentResultGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.Student.RegistrationNumber });
+            return View(model);
+        }
+        public JsonResult GetStudentByResultStudentId(int studentId)
+        {
+            var query = from s in studentDAL.SaveStudentResultGetAll()
+                        join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
+                        select new
+                        {
+                            StudentId = s.StudentId,              
+                            StudentName = s.StudentName,
+                            StudentEmail = s.StudentEmail,
+                            DepartmentName = s.DepartmentName,
+                            CourseCode = c.CourseCode,
+                            CourseName = c.CourseName,
+                            GradeLatter = s.GradeLetter,
+                        };
+            var dataList = query.Where(c => c.StudentId == studentId).ToList();
+            var jsonData = dataList.Select(c => new { c.StudentName, c.StudentEmail, c.DepartmentName,c.CourseCode,c.CourseName,c.GradeLatter});
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+        ////----------------Student result view End---------------/////
 
     }
 }
