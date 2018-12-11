@@ -18,19 +18,32 @@ namespace pratice
             CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
             StudentDAL studentDAL = new StudentDAL();
 
-            var query = from s in studentDAL.StudentGetAll()
-                        join c in courseTeacherDAL.CourseGetAll() on s.DepartmentId equals c.DepartmentId
-                        where s.StudentId == id
-                        select new { StudentId = s.StudentId, StudentName = s.StudentName,
-                                     DepartmentName= s.Department.DepartmentName, 
-                                     DepartmentNameC = c.Department.DepartmentName, 
-                                     CourseNameC= c.CourseName};
-
-            foreach (var v in query)
+            var result = studentDAL.StudentEnrollListGetAll()
+                .Select(n => new
+                {
+                    studentId= n.StudentId,
+                    studentName = n.Student.StudentName,
+                    registretionNo = n.Student.RegistrationNumber
+                });
+            foreach (var v in result)
             {
-                Console.WriteLine(v.StudentId + "\t" + v.StudentName + "\t" + v.DepartmentName + "\t" + v.DepartmentNameC + "\t" + v.CourseNameC);
+                Console.WriteLine(v.studentId + "\t" + v.studentName +"\t"+ v.registretionNo);
             }
             Console.ReadKey();
+
+            //var query = from s in studentDAL.StudentGetAll()
+            //            join c in courseTeacherDAL.CourseGetAll() on s.DepartmentId equals c.DepartmentId
+            //            where s.StudentId == id
+            //            select new { StudentId = s.StudentId, StudentName = s.StudentName,
+            //                         DepartmentName= s.Department.DepartmentName, 
+            //                         DepartmentNameC = c.Department.DepartmentName, 
+            //                         CourseNameC= c.CourseName};
+
+            //foreach (var v in query)
+            //{
+            //    Console.WriteLine(v.StudentId + "\t" + v.StudentName + "\t" + v.DepartmentName + "\t" + v.DepartmentNameC + "\t" + v.CourseNameC);
+            //}
+            //Console.ReadKey();
 
             //CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
             //var teacherGetAll = courseTeacherDAL.TeacherGetAll();

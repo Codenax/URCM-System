@@ -49,7 +49,9 @@
     <Compile Include="Models\AssignTeacher.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\SaveStudentResult.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentEnroll.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

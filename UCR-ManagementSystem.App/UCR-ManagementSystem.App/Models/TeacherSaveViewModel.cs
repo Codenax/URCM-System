@@ -9,8 +9,8 @@ namespace UCR_ManagementSystem.App.Models
 {
     public class TeacherSaveViewModel
     {
-        [Required(ErrorMessage = "Teacher Name Is Required")]
-        [Display(Name = "Teacher Name")]
+        [Required(ErrorMessage = "Name Is Required")]
+        [Display(Name = "Name")]
         public string TeacherName { get; set; }
 
         [Required(ErrorMessage = "Address Is Required")]
@@ -23,7 +23,7 @@ namespace UCR_ManagementSystem.App.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Contact No Is Required")]
-        [Display(Name = "Contact No")]
+        [Display(Name = "Contact No.")]
         [StringLength(11, MinimumLength = 11, ErrorMessage = "Contact No must be 11 characters")]
         public long ContactNo { get; set; }
 
@@ -31,8 +31,8 @@ namespace UCR_ManagementSystem.App.Models
         [Display(Name = "Designation")]
         public string Designation { get; set; }
 
-        [Required(ErrorMessage = "Department Name Is Required")]
-        [Display(Name = "Department Name")]
+        [Required(ErrorMessage = "Department Is Required")]
+        [Display(Name = "Department")]
         public int DepartmentId { get; set; }
 
         [Required(ErrorMessage = "Credit Is Required")]

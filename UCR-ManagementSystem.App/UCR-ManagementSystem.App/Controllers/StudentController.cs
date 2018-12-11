@@ -77,11 +77,12 @@ namespace UCR_ManagementSystem.App.Controllers
         }
    
     ////----------------Save Student End---------------/////
+    ////----------------Student enroll---------------/////
 
         [HttpGet]
         public ActionResult StudentEnrollInaCourse()
         {
-            var model = new StudentViewModel();
+            var model = new StudentEnrollViewModel();
             model.RegistrationNumberList = studentDAL.StudentGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
             model.CoursetSelectListItems = GetDefaultSelectListItem();
             return View(model);
@@ -100,11 +101,6 @@ namespace UCR_ManagementSystem.App.Controllers
         }
         public JsonResult GetCourseInfoByStudentId(int studentId)
         {
-            //var dataList = studentDAL.StudentGetAll();
-            //dataList = dataList.Where(c => c.StudentId == studentId).ToList();
-            //var jsonData = dataList.Select(c => new { c.Department.Course.CourseId, c.Department.Course.CourseName });
-            //StudentDAL studentDAL = new StudentDAL();
-            
             var result = from s in studentDAL.StudentGetAll()
                         join c in courseTeacherDAL.CourseGetAll() on s.DepartmentId equals c.DepartmentId
                         select new
@@ -121,6 +117,49 @@ namespace UCR_ManagementSystem.App.Controllers
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult StudentEnrollInaCourse(StudentEnroll studentEnroll)
+        {
+            var FEmessage = "";
+
+            if (ModelState.IsValid)
+            {
+                //var course = Mapper.Map<Course>(model);
+
+                bool isSavedSE = studentManager.Add(studentEnroll);
+                if (isSavedSE)
+                {
+                    ViewBag.SEMessage = "Enroll Course Information Saved Successfully!";
+                }
+                else
+                {
+                    FEmessage = "Enroll Course Information Saved Failed";
+                }
+            }
+            else
+            {
+                FEmessage = "Failed";
+            }
+            var model = new StudentEnrollViewModel();
+            model.RegistrationNumberList = studentDAL.StudentGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
+            model.CoursetSelectListItems = GetDefaultSelectListItem();
+            ViewBag.FMessage = FEmessage;
+            return View(model);
+        }
+
+        ////----------------Student enroll End---------------/////
+        ////----------------Save Student result---------------/////
+        [HttpGet]
+        public ActionResult SaveStudentResult()
+        {
+            var model = new SaveStudentResultViewModel();
+            model.RegistrationNumberList = studentDAL.StudentEnrollListGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.Student.RegistrationNumber });
+            model.CoursetSelectListItems = GetDefaultSelectListItem();
+            return View(model);
+        }
+
+
+        ////----------------Save Student result End---------------/////
 
     }
 }

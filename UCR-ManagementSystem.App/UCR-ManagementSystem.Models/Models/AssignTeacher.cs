@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace UCR_ManagementSystem.Models.Models
 {
-   public class AssignTeacher
+    public class AssignTeacher
     {
 
         [Key]
@@ -25,6 +25,6 @@ namespace UCR_ManagementSystem.Models.Models
         //public static List<AssignTeacher> GetAllAssignTeacherList();
 
         //[NotMapped]
-        
+
     }    
 }

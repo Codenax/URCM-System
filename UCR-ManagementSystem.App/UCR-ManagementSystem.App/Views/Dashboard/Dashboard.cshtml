@@ -1,4 +1,4 @@
-﻿@model UCR_ManagementSystem.App.Models.AssignTeacherViewModel
+﻿
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -37,7 +37,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-parent nav-expanded nav-active">
+                    <li class="nav-parent">
                         <a>
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Course & Teacher Info</span>
@@ -46,10 +46,9 @@
                             <li><a href="~/CourseTeacher/SaveCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
                             <li><a href="~/CourseTeacher/saveTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
                             <li><a href="~/CourseTeacher/AssignTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
-                            <li class="nav-active"><a href="~/CourseTeacher/viewCourseStatics" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
+                            <li><a href="~/CourseTeacher/viewCourseStatics" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
                         </ul>
                     </li>
-
 
                     <li class="nav-parent">
                         <a>
@@ -87,7 +86,7 @@
                             <span style="font-weight:bold;">Unassign & Unallocate</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="unassignAllCourses.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses </a></li>
+                            <li><a href="unassignAllCourses.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses</a></li>
                             <li><a href="unallocateAllClassRooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
                         </ul>
                     </li>
@@ -100,9 +99,12 @@
 
 </aside>
 <!-- end: sidebar -->
+
+
+
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>View Course Statics</h2>
+        <h2>Dashboard</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -111,101 +113,16 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Course & Teacher Info / View Course Statics</span></li>
+                <li><span>Dashboard</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
         </div>
     </header>
-    <!-- start: page ---------///////////////////////--------------------------->
-
+    <!-- start: page -->
     <div class="row">
-        <div class="col-md-12">
-            <form method="POST" id="form" class="form-horizontal">
-                <section class="panel-dark">
-                    <header class="panel-heading" style="background-color: #34495E">
-                        <h2 class="panel-title">View&ensp;Course&ensp;Statics</h2> <!--save departments information-->
-                        <p class="panel-subtitle">
-                            Enter Department
-                        </p>
-                    </header>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.DepartmentId, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-                            <div class="col-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-edit"></i>
-                                    </span>
-                                    @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
-                                    @Html.DropDownListFor(c => c.DepartmentId, Model.DepartmentSelectListItemsViewCourseStatics, "Select...", new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(c => c.DepartmentId, null, new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                                <section class="panel-dark">
-                                    <header class="panel-heading" style="background-color: #34495E">
-                                        <h6 class="panel-title">Course&ensp;Informations</h6>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div class="table-responsive">
-                                            <table id="blogTable" class="table table-bordered mb-none">
-                                                <thead>
-                                                    <tr style="background-color:#dfebf7">                                                       
-                                                        <th>Code</th>
-                                                        <th>Name/Tatle</th>
-                                                        <th>Semester</th>
-                                                        <th>Assing To</th>
-                                                </thead>
-                                                <tbody></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <footer class="panel-footer" style="background-color: #34495E"></footer>
-                                </section>                          
-                        </div>
-                    </div>               
-                </section>
-            </form>
-        </div>
+
+
     </div>
-
-
-    <!-- end: page -------------///////////////////////////----------------------->
+    <!-- end: page -->
 </section>
-@section Scripts{
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/CourseTeacher/ViewCourseStatic.js"></script>
-    @*<script>
-        $(document).ready(function () {
-            $("#DepartmentId").change(function () {
-                $('#blogTable tbody').empty();
-                $.ajax({
-                    type: 'GET',
-                    url: '@Url.Action("GetCourseInfo")',
-                    datatype: JSON,
-                    data: { 'departmentId': $("#DepartmentId").val() },
-                    success: function (data) {
-                        $('#blogTable tbody').empty();
-                        $.each(data, function (i, item) {
-                            var rows = "<tr>"
-                    + "<td>" + item.CourseCode + "</td>"
-                    + "<td>" + item.CourseName + "</td>"
-                    + "<td>" + item.Semester + "</td>"
-                    + "<td>" + item.AssignTo + "</td>"
-                    + "</tr>";
-                            $('#blogTable tbody').append(rows);
-                        });
-                    },
-                    error: function (data) { }
-                });
-            });
-        });
-    </script>*@
-}

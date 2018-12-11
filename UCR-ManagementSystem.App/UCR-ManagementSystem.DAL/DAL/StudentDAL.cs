@@ -25,6 +25,31 @@ namespace UCR_ManagementSystem.DAL.DAL
         {
             return db.Students.Include(c => c.Department).ToList();
         }
+
+        ///---Student Enroll---///
+        public bool Add(StudentEnroll studentEnroll)
+        {
+            db.StudentEnrolls.Add(studentEnroll);
+
+            return db.SaveChanges() > 0;
+        }
+
+        public List<StudentEnroll> StudentEnrollListGetAll()
+        {
+            return db.StudentEnrolls.Include(c => c.Student).ToList();
+        }
+        ///---Student Enroll End---///
+         ///-----Save Student result---////
+
+        public bool Add(SaveStudentResult saveStudentResult)
+        {
+            db.SaveStudentResults.Add(saveStudentResult);
+
+            return db.SaveChanges() > 0;
+        }
+
+         ///-----Save Student result end---////
+
     }
 }
      

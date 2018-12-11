@@ -1,11 +1,8 @@
-﻿@model UCR_ManagementSystem.App.Models.StudentEnrollViewModel
+﻿@model UCR_ManagementSystem.App.Models.SaveStudentResultViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-            <!-- start: sidebar -->
 <aside id="sidebar-left" class="sidebar-left">
 
     <div class="sidebar-header">
@@ -22,7 +19,7 @@
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
                     <li class="nav-active">
-                        <a href="~/Dashboard/Dashboard">
+                        <a href="dashboard.html">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Dashboard</span>
                         </a>
@@ -33,8 +30,9 @@
                             <span style="font-weight:bold;">Department Information</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="~/Department/SaveDepartment" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Departments</a> </li>
-                            <li><a href="~/Department/ShowDepartment" style="font-weight:bold"><i class="fa fa-angle-right"></i>View All Departments</a> </li>
+                            <li><a href="saveDepartments.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Departments</a> </li>
+
+                            <li><a href="viewAllDepartments.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View All Departments</a> </li>
                         </ul>
                     </li>
 
@@ -44,10 +42,10 @@
                             <span style="font-weight:bold;">Course & Teacher Info</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="~/CourseTeacher/SaveCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
-                            <li><a href="~/CourseTeacher/saveTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
-                            <li><a href="~/CourseTeacher/AssignTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
-                            <li><a href="~/CourseTeacher/viewCourseStatics" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
+                            <li><a href="saveCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
+                            <li><a href="saveTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
+                            <li><a href="courseAssignToTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
+                            <li><a href="viewCourseStatics.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
                         </ul>
                     </li>
 
@@ -61,23 +59,23 @@
                             <li><a href="viewClassScheduleRoomAllocationInformation.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
                         </ul>
                     </li>
-                    <li class="nav-parent nav-expanded nav-active">
+                    <li class="nav-parent">
                         <a>
                             <i class="fa fa-columns" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Reg-Student & Course-Enroll</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="~/Student/RegStudent" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
-                            <li class="nav-active"><a href="~/Student/StudentEnrollInaCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
+                            <li><a href="registerStudent.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
+                            <li><a href="enrollInaCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
                         </ul>
                     </li>
-                    <li class="nav-parent">
+                    <li class="nav-parent nav-expanded nav-active">
                         <a>
                             <i class="fa fa-table" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Student Result</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="saveStudentResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
+                            <li class="nav-active"><a href="saveStudentResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
                             <li><a href="viewResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
                         </ul>
                     </li>
@@ -93,6 +91,7 @@
                     </li>
                 </ul>
             </nav>
+
             <hr class="separator" />
         </div>
     </div>
@@ -104,23 +103,23 @@
 
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Enroll In a Course</h2>
+        <h2>Save Students Result</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="~/Dashboard/Dashboard">
+                    <a href="dashboard.html">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Reg-Student & Course-Enroll / Enroll In a Course</span></li>
+                <li><span>Student Result / Save Student Result</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
         </div>
     </header>
+    <!-- start: page ---------///////////////////////--------------------------->
 
-    <!-- start: page -////////////////////////////////////--------------------->
     <div class="row">
         <div class="col-md-12">
             <form method="POST" id="form" class="form-horizontal">
@@ -133,14 +132,12 @@
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
                             @Html.LabelFor(c => c.StudentId, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
                                     @Html.DropDownListFor(c => c.StudentId, Model.RegistrationNumberList, "Select...", new { @class = "form-control" })
                                     @Html.ValidationMessageFor(c => c.StudentId, null, new { @class = "text-danger" })
                                 </div>
@@ -148,28 +145,24 @@
                         </div>
 
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
                             @Html.LabelFor(c => c.StudentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
                                     @Html.TextBoxFor(c => c.StudentName, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
                                     @Html.ValidationMessageFor(c => c.StudentName, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
                             @Html.LabelFor(c => c.StudentEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
                                     @Html.TextBoxFor(c => c.StudentEmail, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
                                     @Html.ValidationMessageFor(c => c.StudentEmail, null, new { @class = "text-danger" })
                                 </div>
@@ -177,49 +170,57 @@
                         </div>
 
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
                             @Html.LabelFor(c => c.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
                                     @Html.TextBoxFor(c => c.DepartmentName, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
                                     @Html.ValidationMessageFor(c => c.DepartmentName, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
                             @Html.LabelFor(c => c.CourseId, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @*<textarea name="CourseDescription" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="eg.: CSS" required></textarea>*@
-                                    @Html.DropDownListFor(c => c.CourseId, Model.CoursetSelectListItems,new { @class = "form-control" })
+                                    @Html.DropDownListFor(c => c.CourseId, Model.CoursetSelectListItems, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(c => c.CourseId, null, new { @class = "text-danger" })
                                 </div>
                             </div>
-                        </div>   
+                        </div>
                         <div class="form-group">
-                            @*<label class="col-sm-2 control-label" style="font-weight:bold">Description<span class="required">*</span></label>*@
-                            @Html.LabelFor(c => c.EnrollData, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                            @Html.LabelFor(c => c.GradeLetter, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @Html.TextBox("EnrollData", DateTime.Now.ToString("yyyy-MM-dd"), new { type = "date" })
-                                    @Html.ValidationMessageFor(c => c.EnrollData, null, new { @class = "text-danger" })
+                                    @Html.DropDownList("GradeLetter", new List<SelectListItem>()
+                                                {
+                                                new SelectListItem {Text = "A+", Value="A+"},
+                                                new SelectListItem {Text = "A", Value="A"},
+                                                new SelectListItem {Text = "A-", Value="A-"},
+                                                new SelectListItem {Text = "B+", Value="B+"},
+                                                new SelectListItem {Text = "B", Value="B"},
+                                                new SelectListItem {Text = "B-", Value="B-"},
+                                                new SelectListItem {Text = "C+", Value="C+"},
+                                                new SelectListItem {Text = "C", Value="C"},
+                                                new SelectListItem {Text = "C-", Value="C-"},
+                                                new SelectListItem {Text = "D+", Value="C+"},
+                                                new SelectListItem {Text = "D", Value="D"},
+                                                new SelectListItem {Text = "D-", Value="D-"},
+                                                new SelectListItem {Text = "F", Value="F-"},
+                                                }, "Select...", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(c => c.GradeLetter, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
-                        @*<input id="@EnrollData" type="date">*@
-                        @*@Html.TextBox("date", DateTime.Now.ToString("yyyy-MM-dd"), new { type = "date" })*@
-                    </div>                    
+                    </div>
                     <footer class="panel-footer" style="background-color: #dfebf7">
                         <div class="row">
                             <div class="col-sm-3" style="text-align:right">
@@ -242,13 +243,6 @@
             </form>
         </div>
     </div>
-    <!-- end: page -/////////////////////////////////////----------------------->
+
+    <!-- end: page -------------///////////////////////////----------------------->
 </section>
-
-@section Scripts{
-
-   <script src="~/Scripts/jquery-1.10.2.js"></script>
-   <script src="~/Scripts/jquery.validate.min.js"></script>
-   <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-   <script src="~/Scripts/CourseTeacher/StudentInfo.js"></script>
-}

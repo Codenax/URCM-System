@@ -89,7 +89,9 @@
   <ItemGroup>
     <Content Include="css\bootstrap-multiselect.css" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\datepicker.css" />
     <Content Include="css\datepicker3.css" />
+    <Content Include="css\datepicker_d.css" />
     <Content Include="css\default.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\jquery-ui-1.10.4.custom.css" />
@@ -107,6 +109,7 @@
     <Content Include="Scripts\CourseTeacher\CourseTeacher.js" />
     <Content Include="Scripts\CourseTeacher\StudentInfo.js" />
     <Content Include="Scripts\CourseTeacher\ViewCourseStatic.js" />
+    <Content Include="Scripts\Design\bootstrap-datepicker.js" />
     <Content Include="Scripts\examples.dashboard.js" />
     <Content Include="Scripts\gauge.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -217,11 +220,14 @@
     <Content Include="theme\octopus\viewClassScheduleRoomAllocationInformation.html" />
     <Content Include="theme\octopus\viewCourseStatics.html" />
     <Content Include="theme\octopus\viewResult.html" />
+    <Content Include="Views\Shared\logor.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppUtility.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseTeacherController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -230,6 +236,8 @@
     <Compile Include="Models\AssignTeacherViewModel.cs" />
     <Compile Include="Models\CourseSaveViewModel.cs" />
     <Compile Include="Models\DepartmentSaveViewModel.cs" />
+    <Compile Include="Models\SaveStudentResultViewModel.cs" />
+    <Compile Include="Models\StudentEnrollViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\TeacherSaveViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -247,6 +255,8 @@
     <Content Include="Views\CourseTeacher\AssignTeacher.cshtml" />
     <Content Include="Views\CourseTeacher\viewCourseStatics.cshtml" />
     <Content Include="Views\Student\StudentEnrollInaCourse.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\Student\SaveStudentResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

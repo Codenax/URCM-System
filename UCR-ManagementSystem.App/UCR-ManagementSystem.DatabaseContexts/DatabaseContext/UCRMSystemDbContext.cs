@@ -20,5 +20,7 @@ namespace UCR_ManagementSystem.DatabaseContexts.DatabaseContext
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<AssignTeacher> AssignTeachers { get; set; }
+        public DbSet<StudentEnroll> StudentEnrolls { get; set; }
+        public DbSet<SaveStudentResult> SaveStudentResults { get; set; }
     }
 }

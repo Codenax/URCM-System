@@ -12,13 +12,13 @@ namespace UCR_ManagementSystem.App.Models
     public class CourseSaveViewModel
     {
 
-        [Required(ErrorMessage = "Course Code Is Required")]
-        [Display(Name = "Course Code")]
+        [Required(ErrorMessage = "Code Is Required")]
+        [Display(Name = "Code")]
         [StringLength(20,MinimumLength = 5, ErrorMessage = "Course Code  must  be  at  least  five  (5)  characters  long.")]
         public string CourseCode { get; set; }
 
-        [Required(ErrorMessage = "Course Name Is Required")]
-        [Display(Name = "Course Name")]
+        [Required(ErrorMessage = "Name Is Required")]
+        [Display(Name = "Name")]
         public string CourseName { get; set; }
 
         [Required(ErrorMessage = "Credit Is Required")]
@@ -29,8 +29,8 @@ namespace UCR_ManagementSystem.App.Models
         [Display(Name = "Description")]
         public string CourseDescription { get; set; }
 
-        [Required(ErrorMessage = "Department Name Is Required")]
-        [Display(Name = "Department Name")]
+        [Required(ErrorMessage = "Department Is Required")]
+        [Display(Name = "Department")]
         public int DepartmentId { get; set; }
 
         [Required(ErrorMessage = "Semeste Is Required")]

@@ -21,7 +21,7 @@ namespace UCR_ManagementSystem.App.Controllers
         CourseTeacherManager courseTeacherManager = new CourseTeacherManager();
         DepartmentDAL departmentDAL = new DepartmentDAL();
 
-
+        string modelState;
 
         ////----------------Save Course---------------/////
         [HttpGet]
@@ -59,6 +59,7 @@ namespace UCR_ManagementSystem.App.Controllers
             else
             {
                 message = "Failed";
+                modelState = AppUtility.GetModelStateError(ModelState);
             }
 
             var model = new CourseSaveViewModel();

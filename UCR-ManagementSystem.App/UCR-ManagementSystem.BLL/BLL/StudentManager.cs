@@ -11,12 +11,29 @@ namespace UCR_ManagementSystem.BLL.BLL
    public class StudentManager
     {
         StudentDAL studentDAL = new StudentDAL();
-        ///----Save Teacher----///
+        ///----Save Student----///
         public bool Add(Student student)
         {
             bool isSavedS = studentDAL.Add(student);
             return isSavedS;
         }
-        ///----Save Teacher End----
+        ///----Save Student End----///
+        ///---- Student Enroll ----///
+        public bool Add(StudentEnroll studentEnroll)
+        {
+            bool isSavedSE = studentDAL.Add(studentEnroll);
+            return isSavedSE;
+        }
+        ///---- Student Enroll End----///
+        ///----- Save student result---///
+
+        public bool Add(SaveStudentResult saveStudentResult)
+        {
+            bool isSavedSSR = studentDAL.Add(saveStudentResult);
+            return isSavedSSR;
+        }
+
+        ///----- Save student result End---/// 
+
     } 
 }

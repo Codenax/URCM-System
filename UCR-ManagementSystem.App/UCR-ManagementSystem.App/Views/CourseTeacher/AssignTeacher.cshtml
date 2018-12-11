@@ -23,7 +23,7 @@
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
                     <li class="nav-active">
-                        <a href="dashboard.html">
+                        <a href="~/Dashboard/Dashboard">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Dashboard</span>
                         </a>
@@ -35,7 +35,6 @@
                         </a>
                         <ul class="nav nav-children">
                             <li><a href="~/Department/SaveDepartment" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Departments</a> </li>
-
                             <li><a href="~/Department/ShowDepartment" style="font-weight:bold"><i class="fa fa-angle-right"></i>View All Departments</a> </li>
                         </ul>
                     </li>
@@ -46,10 +45,10 @@
                             <span style="font-weight:bold;">Course & Teacher Info</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="~/CourseTeacher/SaveCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
+                            <li ><a href="~/CourseTeacher/SaveCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
                             <li><a href="~/CourseTeacher/saveTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
                             <li class="nav-active"><a href="~/CourseTeacher/AssignTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
-                            <li><a href="~/CourseTeacher/viewCourseStatics style=" font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
+                            <li><a href="~/CourseTeacher/viewCourseStatics" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
                         </ul>
                     </li>
 
@@ -69,8 +68,8 @@
                             <span style="font-weight:bold;">Reg-Student & Course-Enroll</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="registerStudent.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
-                            <li><a href="enrollInaCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
+                            <li><a href="~/Student/RegStudent" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
+                            <li><a href="~/Student/StudentEnrollInaCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
                         </ul>
                     </li>
                     <li class="nav-parent">
@@ -110,12 +109,12 @@
 
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Course Assign to Teacher</h2>
+        <h2> Assign Course to Teacher</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="~/Dashboard/Dashboard">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
@@ -131,9 +130,9 @@
             <form method="POST" id="form" class="form-horizontal">
                 <section class="panel-dark">
                     <header class="panel-heading" style="background-color: #34495E">
-                        <h2 class="panel-title">Save&ensp;Teachers&ensp;Information</h2> <!--save departments information-->
+                        <h2 class="panel-title">Assign&ensp;Course&ensp;to&ensp;Teacher</h2> <!--save departments information-->
                         <p class="panel-subtitle">
-                            Entry Teacher Information.
+                            Enter Information.
                         </p>
                     </header>
                     <div class="panel-body">

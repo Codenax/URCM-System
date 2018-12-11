@@ -79,6 +79,34 @@
     <Compile Include="Migrations\201812102227251_sdjfasljfasfl.Designer.cs">
       <DependentUpon>201812102227251_sdjfasljfasfl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812111532294_addEnroll.cs" />
+    <Compile Include="Migrations\201812111532294_addEnroll.Designer.cs">
+      <DependentUpon>201812111532294_addEnroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111636294_addTadeTime.cs" />
+    <Compile Include="Migrations\201812111636294_addTadeTime.Designer.cs">
+      <DependentUpon>201812111636294_addTadeTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111642497_ahkfla.cs" />
+    <Compile Include="Migrations\201812111642497_ahkfla.Designer.cs">
+      <DependentUpon>201812111642497_ahkfla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111649307_lsjdf%3bas.cs" />
+    <Compile Include="Migrations\201812111649307_lsjdf%3bas.Designer.cs">
+      <DependentUpon>201812111649307_lsjdf%3bas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111650100_ajf%3ba.cs" />
+    <Compile Include="Migrations\201812111650100_ajf%3ba.Designer.cs">
+      <DependentUpon>201812111650100_ajf%3ba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111709286_ksahdfla.cs" />
+    <Compile Include="Migrations\201812111709286_ksahdfla.Designer.cs">
+      <DependentUpon>201812111709286_ksahdfla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111725149_addStudentResultTable.cs" />
+    <Compile Include="Migrations\201812111725149_addStudentResultTable.Designer.cs">
+      <DependentUpon>201812111725149_addStudentResultTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -129,6 +157,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812102227251_sdjfasljfasfl.resx">
       <DependentUpon>201812102227251_sdjfasljfasfl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111532294_addEnroll.resx">
+      <DependentUpon>201812111532294_addEnroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111636294_addTadeTime.resx">
+      <DependentUpon>201812111636294_addTadeTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111642497_ahkfla.resx">
+      <DependentUpon>201812111642497_ahkfla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111649307_lsjdf%3bas.resx">
+      <DependentUpon>201812111649307_lsjdf%3bas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111650100_ajf%3ba.resx">
+      <DependentUpon>201812111650100_ajf%3ba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111709286_ksahdfla.resx">
+      <DependentUpon>201812111709286_ksahdfla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111725149_addStudentResultTable.resx">
+      <DependentUpon>201812111725149_addStudentResultTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
