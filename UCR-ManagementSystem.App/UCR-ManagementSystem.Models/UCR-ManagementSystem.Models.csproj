@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AllocateClassRoom.cs" />
     <Compile Include="Models\AssignTeacher.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Department.cs" />

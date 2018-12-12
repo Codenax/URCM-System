@@ -106,6 +106,7 @@
     <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CourseTeacher\ClassRoomSchedul.js" />
     <Content Include="Scripts\CourseTeacher\CourseTeacher.js" />
     <Content Include="Scripts\CourseTeacher\SaveStudentResult.js" />
     <Content Include="Scripts\CourseTeacher\StudentInfo.js" />
@@ -228,6 +229,7 @@
   <ItemGroup>
     <Compile Include="AppUtility.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClassRoomScheduleController.cs" />
     <Compile Include="Controllers\CourseTeacherController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -236,6 +238,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AssignTeacherViewModel.cs" />
+    <Compile Include="Models\ClassroomScheduleViewModel.cs" />
     <Compile Include="Models\CourseSaveViewModel.cs" />
     <Compile Include="Models\DepartmentSaveViewModel.cs" />
     <Compile Include="Models\SaveStudentResultViewModel.cs" />
@@ -260,6 +263,7 @@
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Student\SaveStudentResult.cshtml" />
     <Content Include="Views\Student\StudentResultView.cshtml" />
+    <Content Include="Views\ClassRoomSchedule\allocateClassrooms.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

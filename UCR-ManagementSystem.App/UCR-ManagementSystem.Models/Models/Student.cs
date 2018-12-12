@@ -16,6 +16,8 @@ namespace UCR_ManagementSystem.Models.Models
         public string StudentName { get; set; }
         public string StudentEmail { get; set; }
         public long StudentContactNo { get; set; }
+
+        [Column(TypeName = "date")]
         public DateTime RegData { get; set; }
         public string StudentAddress { get; set; }
         public int DepartmentId { get; set; }

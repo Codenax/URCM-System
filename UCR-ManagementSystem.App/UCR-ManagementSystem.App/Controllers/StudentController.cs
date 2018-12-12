@@ -29,8 +29,7 @@ namespace UCR_ManagementSystem.App.Controllers
         public ActionResult RegStudent()
         {
             
-            var model = new StudentViewModel();
-            model.RegData = DateTime.Now;
+            var model = new StudentViewModel();            
             model.DepartmentSelectListItems = departmentDAL.GetAll()
                                                 .Select(c => new SelectListItem()
                                                 {

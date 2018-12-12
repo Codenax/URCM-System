@@ -115,6 +115,30 @@
     <Compile Include="Migrations\201812112107523_asfasfkj.Designer.cs">
       <DependentUpon>201812112107523_asfasfkj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812121534263_allocateClassroom.cs" />
+    <Compile Include="Migrations\201812121534263_allocateClassroom.Designer.cs">
+      <DependentUpon>201812121534263_allocateClassroom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121602121_date.cs" />
+    <Compile Include="Migrations\201812121602121_date.Designer.cs">
+      <DependentUpon>201812121602121_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121606163_sadjfaskfj.cs" />
+    <Compile Include="Migrations\201812121606163_sadjfaskfj.Designer.cs">
+      <DependentUpon>201812121606163_sadjfaskfj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121609138_asjdfha%3bs.cs" />
+    <Compile Include="Migrations\201812121609138_asjdfha%3bs.Designer.cs">
+      <DependentUpon>201812121609138_asjdfha%3bs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121611379_ljsd%3baf.cs" />
+    <Compile Include="Migrations\201812121611379_ljsd%3baf.Designer.cs">
+      <DependentUpon>201812121611379_ljsd%3baf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812121615217_shadfla.cs" />
+    <Compile Include="Migrations\201812121615217_shadfla.Designer.cs">
+      <DependentUpon>201812121615217_shadfla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,6 +216,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812112107523_asfasfkj.resx">
       <DependentUpon>201812112107523_asfasfkj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121534263_allocateClassroom.resx">
+      <DependentUpon>201812121534263_allocateClassroom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121602121_date.resx">
+      <DependentUpon>201812121602121_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121606163_sadjfaskfj.resx">
+      <DependentUpon>201812121606163_sadjfaskfj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121609138_asjdfha%3bs.resx">
+      <DependentUpon>201812121609138_asjdfha%3bs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121611379_ljsd%3baf.resx">
+      <DependentUpon>201812121611379_ljsd%3baf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812121615217_shadfla.resx">
+      <DependentUpon>201812121615217_shadfla.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
