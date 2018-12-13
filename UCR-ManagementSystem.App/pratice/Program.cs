@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UCR_ManagementSystem.Models.Models;
 using UCR_ManagementSystem.DAL.DAL;
+using System.Globalization;
+using System.Data.Entity.Core.Objects;
+
 
 namespace pratice
 {
@@ -13,34 +16,168 @@ namespace pratice
         
         static void Main(string[] args)
         {
+    
             int id = 4;
 
-            CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
-            StudentDAL studentDAL = new StudentDAL();
-            var query = from s in studentDAL.SaveStudentResultGetAll()
-                        join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
-                        //where s.StudentId == id
-                        select new
-                        {
-                            StudentId = s.StudentId,
-                            RegistrationNumber = s.Student.RegistrationNumber,
-                            StudentName = s.StudentName,
-                            StudentEmail = s.StudentEmail,
-                            DepartmentName = s.DepartmentName,
-                            CourseCode = c.CourseCode,
-                            CourseName =c.CourseName,
-                            GradeLatter = s.GradeLetter,
-                        };
 
-            foreach (var v in query)
+            //var today =  DateTime.Now;
+            //var dd = today.Day;
+            //var mm = today.Month;
+
+            //var yyyy = today.Year;
+
+            //Console.WriteLine(yyyy);
+
+            //Console.ReadKey();
+
+            CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
+            ClassRoomScheduleDAL classRoomScheduleDAL = new ClassRoomScheduleDAL();
+
+
+            var Result = classRoomScheduleDAL.AllocateClassRoomGetAll().Select(n => new
             {
-                Console.WriteLine(v.StudentId + "\t" + v.RegistrationNumber + "\t"
-                                  + v.StudentName + "\t" + v.StudentEmail + "\t"
-                                  + v.DepartmentName + "\t" + v.CourseCode + "\t"
-                                  + v.CourseName + "\t" + v.GradeLatter + "\t"
+                CourseId = n.CourseId,
+                //RomNo = n.RoomNo,
+                //Day = n.Day,
+                //ToTime = n.ToTime,
+                //FromTime = n.FromTime,
+                Schedule = n.RoomNo + ", - " + n.Day + ", - " + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + " - " + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt") + ";",
+            });
+            var newResult = (from a in Result.ToList()
+                             group a by a.CourseId into CourseGroup
+                             select new
+                             {
+                                 CourseId = CourseGroup.FirstOrDefault().CourseId,
+                                 Schedule = String.Join("\n", (CourseGroup.Select(x => x.Schedule)).ToArray())
+                             });
+            var ResultFinal = from s in courseTeacherDAL.CourseGetAll()
+                              join c in newResult
+                              on s.CourseId equals c.CourseId into sGroup
+                              from c in sGroup.DefaultIfEmpty()
+                              //where s.DepartmentId == departmentId
+                              select new
+                              {
+                                  DepartmentId = s.DepartmentId,
+                                  DepartmentName = s.Department.DepartmentName,
+                                  CourseId = s.CourseId,
+                                  CourseCode = s.CourseCode,
+                                  CourseName = s.CourseName,
+                                  CourseIDC = c == null ? 0 : c.CourseId,
+                                  Schedule = c == null ? "Not Schedule Yet" : c.Schedule,
+                              };
+            foreach (var v in ResultFinal)
+            {
+                Console.WriteLine(v.DepartmentId + "\t" + v.DepartmentName + "\t"
+                                  + v.CourseId + "\t" + v.CourseCode + "\t"
+                                  + v.CourseName + "\t" + v.CourseIDC + "\t"
+                                  + v.Schedule
                                   );
             }
             Console.ReadKey();
+
+
+         //var Result = classRoomScheduleDAL.AllocateClassRoomGetAll().Select(n => new
+         //   {
+         //       CourseId = n.CourseId,
+         //       RomNo = n.RoomNo,
+         //       ToTime = n.ToTime,
+         //       FromTime = n.FromTime,
+         //       Schedule = n.RoomNo + "-" + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + "-" + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt"),
+         //   });
+         //var newResult = (from a in Result.ToList()
+         //                  group a by a.CourseId into CourseGroup
+         //                  select new
+         //                  {
+         //                      CourseId = CourseGroup.FirstOrDefault().CourseId,
+         //                      Schedule = String.Join("\n", (CourseGroup.Select(x => x.Schedule)).ToArray())
+         //                  });
+
+         // foreach (var v in newResult)
+         //   {
+         //       Console.WriteLine(v.CourseId + "\t" + v.Schedule);
+         //   }
+         //   Console.ReadKey();
+
+         //   var query = from s in courseTeacherDAL.CourseGetAll()
+         //               join c in newResult
+         //               on s.CourseId equals c.CourseId into sGroup
+         //               from c in sGroup.DefaultIfEmpty()
+         //               where s.CourseId == id
+         //               select new
+         //               {
+         //                   DepartmentId = s.DepartmentId,
+         //                   DepartmentName = s.Department.DepartmentName,
+         //                   CourseId = s.CourseId,
+         //                   CourseCode = s.CourseCode,
+         //                   CourseName = s.CourseName,
+         //                   CourseIDC = c == null ? 0 : c.CourseId,
+         //                   Schedule = c == null ? "Not Schedule Yet" : c.Schedule,
+         //               };
+
+         //   foreach (var v in query)
+         //   {
+         //       Console.WriteLine(v.DepartmentId + "\t" + v.DepartmentName + "\t"
+         //                         + v.CourseId + "\t" + v.CourseCode + "\t"
+         //                         + v.CourseName + "\t" + v.CourseIDC + "\t"
+         //                         + v.Schedule
+         //                         );
+         //   }
+         //   Console.ReadKey();
+
+
+
+
+            //foreach (var v in newResult)
+            //{
+            //    Console.WriteLine(v.CourseId + "\t" + v.RomNo + "\t"
+            //                      + v.ToTime + "\t" + v.FromTime
+            //                      );
+            //}
+            //Console.ReadKey();
+
+            
+
+            //var result = from e in teacherGetAll
+            //             join d in gropbySum
+            //             on e.TeacherId equals d.TeacherId into eGroup
+            //             from d in eGroup.DefaultIfEmpty()
+            //             select new
+            //             {
+            //                 TeacherId = e.TeacherId,
+            //                 TeacherName = e.TeacherName,
+            //                 CreditTeken = e.CreditTaken,
+            //                 AssignCreditTeken = d == null ? 0 : d.AssignCourseCredit,
+            //                  //AssignTo = d == null ? "Not Assigned Yet" : d.Teacher.TeacherName
+            //             };
+
+
+
+            //CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
+            //StudentDAL studentDAL = new StudentDAL();
+            //var query = from s in studentDAL.SaveStudentResultGetAll()
+            //            join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
+            //            //where s.StudentId == id
+            //            select new
+            //            {
+            //                StudentId = s.StudentId,
+            //                RegistrationNumber = s.Student.RegistrationNumber,
+            //                StudentName = s.StudentName,
+            //                StudentEmail = s.StudentEmail,
+            //                DepartmentName = s.DepartmentName,
+            //                CourseCode = c.CourseCode,
+            //                CourseName =c.CourseName,
+            //                GradeLatter = s.GradeLetter,
+            //            };
+
+            //foreach (var v in query)
+            //{
+            //    Console.WriteLine(v.StudentId + "\t" + v.RegistrationNumber + "\t"
+            //                      + v.StudentName + "\t" + v.StudentEmail + "\t"
+            //                      + v.DepartmentName + "\t" + v.CourseCode + "\t"
+            //                      + v.CourseName + "\t" + v.GradeLatter + "\t"
+            //                      );
+            //}
+            //Console.ReadKey();
 
 
 

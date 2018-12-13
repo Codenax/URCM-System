@@ -166,13 +166,13 @@
                                     </span>
                                     @Html.DropDownList("RoomNo", new List<SelectListItem>()
                                                 {
-                                                new SelectListItem {Text = "A-201", Value="R.No:A-201"},
-                                                new SelectListItem {Text = "A-202", Value="R.No:A-202"},
-                                                new SelectListItem {Text = "A-203", Value="R.No:A-203"},
-                                                new SelectListItem {Text = "B-301", Value="R.No:B-301"},
-                                                new SelectListItem {Text = "B-302", Value="R.No:B-302"},
-                                                new SelectListItem {Text = "B-303", Value="R.No:B-303"},
-                                                new SelectListItem {Text = "C-401", Value="R.No:C-401"},
+                                                new SelectListItem {Text = "Room No: A-201", Value="Room No : A-201"},
+                                                new SelectListItem {Text = "Room No: A-202", Value="Room No : A-202"},
+                                                new SelectListItem {Text = "Room No: A-203", Value="Room No : A-203"},
+                                                new SelectListItem {Text = "Room No: B-301", Value="Room No : B-301"},
+                                                new SelectListItem {Text = "Room No: B-302", Value="Room No : B-302"},
+                                                new SelectListItem {Text = "Room No: B-303", Value="Room No : B-303"},
+                                                new SelectListItem {Text = "Room No: C-401", Value="Room No : C-401"},
                                                 }, "Select...", new { @class = "form-control" })
                                     @Html.ValidationMessageFor(c => c.RoomNo, null, new { @class = "text-danger" })
                                 </div>

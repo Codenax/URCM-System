@@ -35,7 +35,7 @@ namespace UCR_ManagementSystem.App.Models
         [Display(Name = "Department")]
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
-        public string RegistrationNumber { get; set; }
+        //public string RegistrationNumber { get; set; }
         public int CourseId { get; set; }
 
         public IEnumerable<SelectListItem> RegistrationNumberList { get; set; }

@@ -30,6 +30,11 @@ namespace UCR_ManagementSystem.DAL.DAL
         //        .Include(c => c.Employees)
         //        .ToList();
         //}
+
+        public Department GetById(int id)
+        {
+            return db.Departments.SingleOrDefault(c => c.Id == id);
+        }
     }
 
 }

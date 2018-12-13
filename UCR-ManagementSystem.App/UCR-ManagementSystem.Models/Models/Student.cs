@@ -22,14 +22,8 @@ namespace UCR_ManagementSystem.Models.Models
         public string StudentAddress { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
-        public string RegistrationNumber
-        {
-            get
-            {
-                return DepartmentId + " " + RegData;
-            }
-            set { }
-        }
+        public string RegistrationNumber { get; set; }
+   
         [NotMapped]
         public List<Student> StudentList { get; set; }
     }

@@ -8,6 +8,10 @@ using UCR_ManagementSystem.BLL.BLL;
 using UCR_ManagementSystem.DAL.DAL;
 using UCR_ManagementSystem.Models.Models;
 
+using System.Threading.Tasks;
+using System.Globalization;
+using System.Data.Entity.Core.Objects;
+
 namespace UCR_ManagementSystem.App.Controllers
 {
     public class ClassRoomScheduleController : Controller
@@ -17,6 +21,7 @@ namespace UCR_ManagementSystem.App.Controllers
 
         ClassRoomScheduleManager classRoomScheduleManager = new ClassRoomScheduleManager();
         CoueseTeacherDAL courseTeacherDAL = new CoueseTeacherDAL();
+        ClassRoomScheduleDAL classRoomScheduleDAL = new ClassRoomScheduleDAL();
 
         ///---------------------------Allocate Class Room----------------------------------///
         
@@ -78,6 +83,61 @@ namespace UCR_ManagementSystem.App.Controllers
             return View(model);
         }
         ///---------------------------Allocate Class Room End----------------------------------///
+        ///---------------------------viewCourseSchedule----------------------------------///
+
+        [HttpGet]
+        public ActionResult viewCourseSchedule()
+        {
+            var model = new ClassroomScheduleViewModel();
+            model.DepartmentSelectListItems = courseTeacherDAL.CourseGetAll()
+                                                .Select(c => new SelectListItem()
+                                                {
+                                                    Value = c.DepartmentId.ToString(),
+                                                    Text = c.Department.DepartmentName
+                                                });
+            model.CoursetSelectListItems = GetDefaultSelectListItem();
+            return View(model);
+        }
+
+        public JsonResult viewCourseScheduleByDepartmentId(int departmentId)
+        {
+
+            var Result = classRoomScheduleDAL.AllocateClassRoomGetAll().Select(n => new
+            {
+                CourseId = n.CourseId,
+                RomNo = n.RoomNo,
+                Day = n.Day,
+                ToTime = n.ToTime,
+                FromTime = n.FromTime,
+                Schedule = n.RoomNo + ",   " + n.Day + ",   " + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + " - " + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt") + ";",
+            });
+            var newResult = (from a in Result.ToList()
+                             group a by a.CourseId into CourseGroup
+                             select new
+                             {
+                                 CourseId = CourseGroup.FirstOrDefault().CourseId,
+                                 Schedule = String.Join( "\n" , (CourseGroup.Select(x => x.Schedule)).ToArray())
+                             });
+            var ResultFinal = from s in courseTeacherDAL.CourseGetAll()
+                        join c in newResult
+                        on s.CourseId equals c.CourseId into sGroup
+                        from c in sGroup.DefaultIfEmpty()
+                        //where s.DepartmentId == departmentId
+                        select new
+                        {
+                            DepartmentId = s.DepartmentId,
+                            CourseCode = s.CourseCode,
+                            CourseName = s.CourseName,               
+                            Schedule = c == null ? "Not Scheduled Yet" : c.Schedule,
+                        };
+            var dataList = ResultFinal.Where(c => c.DepartmentId == departmentId).ToList();
+            var jsonData = dataList.Select(c => new { c.CourseCode, c.CourseName, c.Schedule});
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        ///---------------------------viewCourseSchedule end----------------------------------///
 
 
 	}

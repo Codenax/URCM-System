@@ -74,6 +74,13 @@ namespace UCR_ManagementSystem.App.Controllers
             ViewBag.FMessage = Fmessage;
             return View(model);
         }
+
+        public JsonResult StudentCountbyDepartmentId(int departmentId)
+        {
+            var result = studentDAL.StudentGetAll();
+            var jsonData = result.Where(c => c.DepartmentId == departmentId).Count();
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
    
     ////----------------Save Student End---------------/////
     ////----------------Student enroll---------------/////

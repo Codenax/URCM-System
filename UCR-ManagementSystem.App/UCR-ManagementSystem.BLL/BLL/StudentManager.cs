@@ -11,9 +11,32 @@ namespace UCR_ManagementSystem.BLL.BLL
    public class StudentManager
     {
         StudentDAL studentDAL = new StudentDAL();
+        DepartmentDAL departmentDal = new DepartmentDAL();
         ///----Save Student----///
+        ///
+
+        public int RegNumber(int departmentId)
+        {
+            int number;
+            var student = studentDAL.StudentGetAll().Where(c => c.DepartmentId == departmentId).LastOrDefault();
+            if (student != null)
+            {
+                var regSplit = student.RegistrationNumber.Split('-');
+                number = Convert.ToInt32(regSplit[2])+1;
+                return number;
+            }
+
+            number = 1;
+            return number;
+        }
+
         public bool Add(Student student)
         {
+            var department = departmentDal.GetById(student.DepartmentId);
+            student.RegistrationNumber = department.DepartmentCode + "-" + 
+                student.RegData.Year + "-" +
+                RegNumber(student.DepartmentId).ToString().PadLeft(3, '0');
+
             bool isSavedS = studentDAL.Add(student);
             return isSavedS;
         }
