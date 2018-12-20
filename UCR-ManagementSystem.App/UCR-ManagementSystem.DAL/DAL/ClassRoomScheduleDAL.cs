@@ -15,15 +15,29 @@ namespace UCR_ManagementSystem.DAL.DAL
        ///----allocateClassRoom----///
        public bool Add(AllocateClassRoom allocateClassRoom)
        {
-           db.AllocateClassRooms.Add(allocateClassRoom);
+           if (AllocateClassRoomGetAll().Where(c => !c.IsUnallocate && c.RoomNo == allocateClassRoom.RoomNo && c.Day == allocateClassRoom.Day
+               && (c.FromTime>= allocateClassRoom.FromTime && c.FromTime< allocateClassRoom.ToTime || c.ToTime> allocateClassRoom.FromTime && c.ToTime<= allocateClassRoom.FromTime)).Any())
+           {
 
-           return db.SaveChanges() > 0;
+               return false;
+           }
+
+           else
+           {
+               db.AllocateClassRooms.Add(allocateClassRoom);
+               return db.SaveChanges() > 0;
+           }              
+
        }
 
        public List<AllocateClassRoom> AllocateClassRoomGetAll()
        {
-           return db.AllocateClassRooms.Include(c => c.Course).ToList();
+           return db.AllocateClassRooms.Where(c => !c.IsUnallocate).Include(c => c.Course).ToList();
        }
         ///----allocateClassRoom end----///
+       public int Complete()
+       {         
+           return db.SaveChanges();
+       }
     }
 }

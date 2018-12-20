@@ -24,5 +24,7 @@ namespace UCR_ManagementSystem.Models.Models
         [Column(TypeName = "time")]
         public TimeSpan ToTime { get; set; }
         public Course Course { get; set; }
+
+        public bool IsUnallocate { get; set; }
     }
 }

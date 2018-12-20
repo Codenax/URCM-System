@@ -29,11 +29,13 @@ namespace UCR_ManagementSystem.App.Controllers
         public ActionResult allocateClassrooms()
         {
             var model = new ClassroomScheduleViewModel();
-            model.DepartmentSelectListItems = courseTeacherDAL.CourseGetAll()
+            var result = courseTeacherDAL.CourseGetAll().Select(c => new { DepartmentId = c.DepartmentId, DepartmentName = c.Department.DepartmentName }).Distinct().ToList();
+
+            model.DepartmentSelectListItems = result
                                                 .Select(c => new SelectListItem() 
                                                 {
                                                     Value = c.DepartmentId.ToString(),
-                                                    Text = c.Department.DepartmentName
+                                                    Text = c.DepartmentName
                                                 });
             model.CoursetSelectListItems = GetDefaultSelectListItem();
             return View(model);
@@ -50,33 +52,42 @@ namespace UCR_ManagementSystem.App.Controllers
             var jsonData = dataList.Select(c => new { c.CourseId, c.CourseName});
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public ActionResult allocateClassrooms(AllocateClassRoom allocateClassRoom)
         {
             var message = "";
 
-            if (ModelState.IsValid)
+            var model = new ClassroomScheduleViewModel();
+
+            if (ModelState.IsValid &&  allocateClassRoom.FromTime < allocateClassRoom.ToTime)
             {
+             
+
                 bool isSaved = classRoomScheduleManager.Add(allocateClassRoom);
                 if (isSaved)
                 {
                     ViewBag.SACMessage = "Class Schedule Information Saved Successfully!";
+                    ModelState.Clear();
                 }
                 else
                 {
-                    message = "Class Schedule Information Saved Failed";
+                    message = "Class Already Allocate In This Time";
+                    //ModelState.Clear();
                 }
             }
             else
             {
-                message = "Failed";
+                message = "Input time is Invalid - To Time must be greater than From Time";
+                ModelState.Clear();
             }
-            var model = new ClassroomScheduleViewModel();
-            model.DepartmentSelectListItems = courseTeacherDAL.CourseGetAll()
+            //var model = new ClassroomScheduleViewModel();
+            var results = courseTeacherDAL.CourseGetAll().Select(c => new { DepartmentId = c.DepartmentId, DepartmentName = c.Department.DepartmentName }).Distinct().ToList();
+            model.DepartmentSelectListItems = results
                                                 .Select(c => new SelectListItem()
                                                 {
                                                     Value = c.DepartmentId.ToString(),
-                                                    Text = c.Department.DepartmentName
+                                                    Text = c.DepartmentName
                                                 });
             model.CoursetSelectListItems = GetDefaultSelectListItem();     
             ViewBag.FACMessage = message;
@@ -89,13 +100,16 @@ namespace UCR_ManagementSystem.App.Controllers
         public ActionResult viewCourseSchedule()
         {
             var model = new ClassroomScheduleViewModel();
-            model.DepartmentSelectListItems = courseTeacherDAL.CourseGetAll()
+            var results = courseTeacherDAL.CourseGetAll().Select(c => new { DepartmentId = c.DepartmentId, DepartmentName = c.Department.DepartmentName }).Distinct().ToList();
+            model.DepartmentSelectListItems = results
                                                 .Select(c => new SelectListItem()
                                                 {
                                                     Value = c.DepartmentId.ToString(),
-                                                    Text = c.Department.DepartmentName
+                                                    Text = c.DepartmentName
                                                 });
             model.CoursetSelectListItems = GetDefaultSelectListItem();
+
+
             return View(model);
         }
 
@@ -109,7 +123,7 @@ namespace UCR_ManagementSystem.App.Controllers
                 Day = n.Day,
                 ToTime = n.ToTime,
                 FromTime = n.FromTime,
-                Schedule = n.RoomNo + ",   " + n.Day + ",   " + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + " - " + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt") + ";",
+                Schedule = n.RoomNo + ",  " + n.Day + ",  " + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + " - " + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt") + ";" + "\n",
             });
             var newResult = (from a in Result.ToList()
                              group a by a.CourseId into CourseGroup

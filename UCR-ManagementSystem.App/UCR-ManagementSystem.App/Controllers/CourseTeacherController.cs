@@ -21,7 +21,7 @@ namespace UCR_ManagementSystem.App.Controllers
         CourseTeacherManager courseTeacherManager = new CourseTeacherManager();
         DepartmentDAL departmentDAL = new DepartmentDAL();
 
-        string modelState;
+        //string modelState;
 
         ////----------------Save Course---------------/////
         [HttpGet]
@@ -40,36 +40,35 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpPost]
         public ActionResult SaveCourse(Course course)
         {
-            var message = "";
 
             if (ModelState.IsValid)
             {
-                //var course = Mapper.Map<Course>(model);
+                
 
                 bool isSaved = courseTeacherManager.Add(course);
                 if (isSaved)
                 {
-                    ViewBag.SMessage = "Course Information Saved Successfully!";                
+                    ViewBag.SMessage = "Course Information Saved Successfully!";
+                    ModelState.Clear();
                 }
                 else
                 {
-                    message = "Course Information Saved Failed";
+                    ViewBag.EMessage = "Code or Name Information Already Exists";
                 }
             }
             else
             {
-                message = "Failed";
-                modelState = AppUtility.GetModelStateError(ModelState);
+                ViewBag.EMessage = "Failed";
+                //modelState = AppUtility.GetModelStateError(ModelState);
             }
 
             var model = new CourseSaveViewModel();
-            model.DepartmentSelectListItems = departmentDAL.GetAll()
-                                                .Select(c => new SelectListItem()
+            model.DepartmentSelectListItems = departmentDAL.GetAll().Select(c => new SelectListItem()
                                                 {
                                                     Value = c.Id.ToString(),
                                                     Text = c.DepartmentName
-                                                });     
-            ViewBag.EMessage = message;
+                                                });
+
             return View(model);
         }
 
@@ -92,7 +91,7 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpPost]
         public ActionResult SaveTeacher(Teacher teacher)
         {
-            var Fmessage = "";
+            //var Fmessage = "";
 
             if (ModelState.IsValid)
             {             
@@ -101,15 +100,16 @@ namespace UCR_ManagementSystem.App.Controllers
                 if (isSavedT)
                 {
                     ViewBag.TMessage = "Teacher Information Saved Successfully!";
+                    ModelState.Clear();
                 }
                 else
                 {
-                    Fmessage = "Teacher Information Saved Failed";
+                    ViewBag.FMessage = "Email Id Already Exists";
                 }
             }
             else
             {
-                Fmessage = "Failed";
+                ViewBag.FMessage = "Failed";
             }
 
             var model = new TeacherSaveViewModel();
@@ -119,7 +119,7 @@ namespace UCR_ManagementSystem.App.Controllers
                                                     Value = c.Id.ToString(),
                                                     Text = c.DepartmentName
                                                 });
-            ViewBag.FMessage = Fmessage;
+            //ViewBag.FMessage = Fmessage;
             return View(model);
         }
 
@@ -205,7 +205,7 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpPost]
         public ActionResult AssignTeacher(AssignTeacher assignTeacher)
         {
-            var message = "";
+            //var message = "";
 
             if (ModelState.IsValid)
             {
@@ -214,22 +214,23 @@ namespace UCR_ManagementSystem.App.Controllers
                 if (isSaved)
                 {
                     ViewBag.SMessage = "Assign Teacher Successfully!";
+                    ModelState.Clear();
                 }
                 else
                 {
-                    message = "Assign Teacher Saved Failed";
+                    ViewBag.EMessage = "This Course Already Assigned";
                 }
             }
             else
             {
-                message = "Failed";
+                ViewBag.EMessage = "Failed";
             }
             var model = new AssignTeacherViewModel();
             model.DepartmentSelectListItems2 = courseTeacherDAL.TeacherGetAll().Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.Department.DepartmentName });
             model.CoursetSelectListItems = courseTeacherDAL.CourseGetAll().Select(c => new SelectListItem() { Value = c.CourseId.ToString(), Text = c.CourseCode });
             model.TeachertSelectListItems = GetDefaultSelectListItem();
             model.TeachertInfoListItems = GetTDefaultSelectListItem();
-            ViewBag.EMessage = message;
+            //ViewBag.EMessage = message;
             return View(model);
         }
         ////----------------Save Asing Teacher end ---------------/////
@@ -240,7 +241,9 @@ namespace UCR_ManagementSystem.App.Controllers
         public ActionResult viewCourseStatics()
         {
             var model = new AssignTeacherViewModel();
-            model.DepartmentSelectListItemsViewCourseStatics = courseTeacherDAL.CourseGetAll().Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.Department.DepartmentName });
+
+            var result = courseTeacherDAL.CourseGetAll().Select(c => new { DepartmentId = c.DepartmentId, DepartmentName = c.Department.DepartmentName }).Distinct().ToList();
+            model.DepartmentSelectListItemsViewCourseStatics = result.Select(c => new SelectListItem() { Value = c.DepartmentId.ToString(), Text = c.DepartmentName });
             return View(model);
         }
 

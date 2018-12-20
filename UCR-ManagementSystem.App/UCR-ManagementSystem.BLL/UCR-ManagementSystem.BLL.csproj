@@ -51,6 +51,10 @@
       <Project>{ded20abc-a894-43d4-a616-4a460385733b}</Project>
       <Name>UCR-ManagementSystem.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UCR-ManagementSystem.DatabaseContexts\UCR-ManagementSystem.DatabaseContexts.csproj">
+      <Project>{17b61b74-46e1-4e1e-9d50-1f606ce5cd3f}</Project>
+      <Name>UCR-ManagementSystem.DatabaseContexts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UCR-ManagementSystem.Models\UCR-ManagementSystem.Models.csproj">
       <Project>{2cbad2b5-03ee-4351-b176-cbdb7d1b01b0}</Project>
       <Name>UCR-ManagementSystem.Models</Name>

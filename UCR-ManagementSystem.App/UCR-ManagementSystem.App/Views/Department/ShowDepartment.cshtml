@@ -55,8 +55,8 @@
                                         <span style="font-weight:bold;">Class Room & Schedule</span>
                                     </a>
                                     <ul class="nav nav-children">
-                                        <li><a href="allocateClassrooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Allocate Classrooms</a></li>
-                                        <li><a href="viewClassScheduleRoomAllocationInformation.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
+                                        <li><a href="~/ClassRoomSchedule/allocateClassrooms" style="font-weight:bold"><i class="fa fa-angle-right"></i>Allocate Classrooms</a></li>
+                                        <li><a href="~/ClassRoomSchedule/viewCourseSchedule" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
                                     </ul>
                                 </li>
                                 <li class="nav-parent">
@@ -75,8 +75,8 @@
                                         <span style="font-weight:bold;">Student Result</span>
                                     </a>
                                     <ul class="nav nav-children">
-                                        <li><a href="saveStudentResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
-                                        <li><a href="viewResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
+                                        <li><a href="~/Student/SaveStudentResult" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
+                                        <li><a href="~/Student/StudentResultView" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
                                     </ul>
                                 </li>
                                 <li class="nav-parent">
@@ -85,8 +85,8 @@
                                         <span style="font-weight:bold;">Unassign & Unallocate</span>
                                     </a>
                                     <ul class="nav nav-children">
-                                        <li><a href="unassignAllCourses.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses </a></li>
-                                        <li><a href="unallocateAllClassRooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
+                                        <li><a href="~/UnassignUnallocate/UnassignCourses" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses</a></li>
+                                        <li><a href="~/UnassignUnallocate/UnallocateClassroom" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -98,62 +98,64 @@
             <!-- end: sidebar -->
 
              <!-- start: Content-body -->
-            <section role="main" class="content-body">
-                <header class="page-header">
-                    <h2>View All Department</h2>
-                    <div class="right-wrapper pull-right">
-                        <ol class="breadcrumbs">
-                            <li>
-                                <a href="~/Dashboard/Dashboard">
-                                    <i class="fa fa-home"></i>
-                                </a>
-                            </li>
-                            <li><span>Department Information / View All Department </span></li>
-                        </ol>
-                        <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+            <section role="main" class="content-body" style="background-color: #e6ffff">
+    <header class="page-header">
+        <h2>View All Department</h2>
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="~/Dashboard/Dashboard">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Department Information / View All Department </span></li>
+            </ol>
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+    <!-- start: page -->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <form id="form" action="forms-validation.html" class="form-horizontal">
+                <section class="panel-dark">
+                    <header class="panel-heading" style="background-color: #34495E">
+                        <h2 class="panel-title">All&ensp;Department&ensp;Informations</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-none">
+                                <thead>
+                                    <tr style="background-color:#dfebf7">
+                                        <th>SL</th>
+                                        <th>Code</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ int i = 1; }
+                                    @if (Model != null && Model.DepartmentList != null && Model.DepartmentList.Count > 0)
+                                    {
+                                        foreach (var department in Model.DepartmentList)
+                                        {
+                                            <tr>
+                                                <td><label>@i</label> @{ i++; }</td>
+                                                <td>@department.DepartmentCode</td>
+                                                <td>@department.DepartmentName</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </header>
-                <!-- start: page -->             
-                <div class="row">
-                    <div class="col-md-12">
-                        <form id="form" action="forms-validation.html" class="form-horizontal">
-                            <section class="panel-dark">
-                                <header class="panel-heading" style="background-color: #34495E">
-                                    <h2 class="panel-title">All&ensp;Department&ensp;Informations</h2>
-                                </header>
-                                <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered mb-none">
-                                            <thead>
-                                                <tr style="background-color:#dfebf7">
-                                                    <th>SL</th>
-                                                    <th>Code</th>
-                                                    <th>Name</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @{ int i = 1; }                                             
-                                                @if (Model != null && Model.DepartmentList != null && Model.DepartmentList.Count > 0)
-                                                {                                         
-                                                    foreach (var department in Model.DepartmentList)
-                                                    {                                                      
-                                                        <tr>                                                           
-                                                            <td><label>@i</label> @{ i++; }</td>
-                                                            <td>@department.DepartmentCode</td>
-                                                            <td>@department.DepartmentName</td>
-                                                        </tr>
-                                                    }
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <footer class="panel-footer" style="background-color: #34495E"></footer>
-                            </section>
-                        </form>
-                    </div>
+                    <footer class="panel-footer" style="background-color: #34495E"></footer>
+                </section>
+            </form>
+        </div>
 
-                </div>
-                <!-- end: page -->
-            </section>
+    </div>
+    <!-- end: page -->
+</section>
+
              <!-- end: Content-body -->

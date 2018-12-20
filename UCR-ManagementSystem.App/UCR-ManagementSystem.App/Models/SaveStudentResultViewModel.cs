@@ -11,7 +11,7 @@ namespace UCR_ManagementSystem.App.Models
     {
 
         [Required(ErrorMessage = "Registration Numbers is Required")]
-        [Display(Name = "Student Reg.No.")]
+        [Display(Name = "Registration No.")]
         public int StudentId { get; set; }
 
         [Display(Name = "Name")]
@@ -27,8 +27,8 @@ namespace UCR_ManagementSystem.App.Models
         [Display(Name = "Select Course")]
         public int CourseId { get; set; }
 
-        [Required(ErrorMessage = "Grade LetteIs Required")]
-        [Display(Name = "Select Grade Letter")]
+        [Required(ErrorMessage = "Grade Letter Required")]
+        [Display(Name = "Grade Letter")]
         public string GradeLetter { get; set; }
         public IEnumerable<SelectListItem> RegistrationNumberList { get; set; }
 

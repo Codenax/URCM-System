@@ -20,4 +20,45 @@
     });
 });
 
-   
+//var isValid = true;
+//$("#SubmitButton").click(function () {
+//    //alert("Sorry.....");
+//    if (!isValid) {
+//        alert("Sorry.....");
+//        return false;
+//    }
+  
+//        var Fromtime = $("#FromTime").timepicker();
+//        var ToTime = $("#ToTime").timepicker();
+       
+//        if (Fromtime >= ToTime) {
+//            isValid = false;
+//            //return;
+//        }
+
+
+//        //var address = $("#Address").val();
+//        //if (address != undefined && address != "") {
+//        //    $("#AddressValidationMsg").text("");
+//        //    return true;
+//        //}
+
+//        //$("#AddressValidationMsg").text("Kichu Paini");
+//        //return false;
+
+//});
+ 
+
+//var isValid = true;
+//$("#Name").change(function () {
+//    var name = $(this).val();
+//    var url = "/Employee/IsNameExist";
+//    var params = { name: name };
+//    $.post(url, params, function (rData) {
+//        if (rData === true) {
+//            alert("Sorry!! Name Already Exist");
+//            isValid = false;
+//            return;
+//        }
+//    });
+//});

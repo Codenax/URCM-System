@@ -15,9 +15,16 @@ namespace UCR_ManagementSystem.DAL.DAL
         ///----Save Student----///
         public bool Add(Student student)
         {
-            db.Students.Add(student);
+            if (db.Students.FirstOrDefault(c => c.StudentEmail.ToLower().Contains(student.StudentEmail.ToLower())) == null)
+            {
+                db.Students.Add(student);
+                return db.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
 
-            return db.SaveChanges() > 0;
         }
         ///----Save Student End----///
         ///
@@ -29,13 +36,32 @@ namespace UCR_ManagementSystem.DAL.DAL
         ///---Student Enroll---///
         public bool Add(StudentEnroll studentEnroll)
         {
-            db.StudentEnrolls.Add(studentEnroll);
+            if (db.StudentEnrolls.Any(c => c.StudentId == studentEnroll.StudentId && c.CourseId == studentEnroll.CourseId))
+            {
 
-            return db.SaveChanges() > 0;
+                return false;
+                //db.StudentEnrolls.Add(studentEnroll);
+                //return db.SaveChanges() > 0;
+            }
+            else if (db.StudentEnrolls.Any(c => c.StudentId == studentEnroll.StudentId && c.CourseId != studentEnroll.CourseId))
+            {
+                db.StudentEnrolls.Add(studentEnroll);
+                return db.SaveChanges() > 0;
+            }
+            else
+            {
+                db.StudentEnrolls.Add(studentEnroll);
+                return db.SaveChanges() > 0;
+            }
+            //else
+            //{
+            //    return false;
+            //}
         }
 
         public List<StudentEnroll> StudentEnrollListGetAll()
         {
+
             return db.StudentEnrolls.Include(c => c.Student).ToList();
         }
         ///---Student Enroll End---///
@@ -43,9 +69,25 @@ namespace UCR_ManagementSystem.DAL.DAL
 
         public bool Add(SaveStudentResult saveStudentResult)
         {
-            db.SaveStudentResults.Add(saveStudentResult);
 
-            return db.SaveChanges() > 0;
+            if (db.SaveStudentResults.Any(c => c.StudentId == saveStudentResult.StudentId && c.CourseId == saveStudentResult.CourseId))
+            {
+
+                return false;
+                //db.StudentEnrolls.Add(studentEnroll);
+                //return db.SaveChanges() > 0;
+            }
+            else if (db.SaveStudentResults.Any(c => c.StudentId == saveStudentResult.StudentId && c.CourseId != saveStudentResult.CourseId))
+            {
+                db.SaveStudentResults.Add(saveStudentResult);
+                return db.SaveChanges() > 0;
+            }
+            else
+            {
+                db.SaveStudentResults.Add(saveStudentResult);
+                return db.SaveChanges() > 0;
+            }
+
         }
 
         public List<SaveStudentResult> SaveStudentResultGetAll()

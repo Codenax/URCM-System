@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UCR_ManagementSystem.Models.Models;
 
 namespace UCR_ManagementSystem.App.Models
 {
@@ -46,6 +47,8 @@ namespace UCR_ManagementSystem.App.Models
 
         public IEnumerable<SelectListItem> CoursetSelectListItems { get; set; }
         public IEnumerable<SelectListItem> DepartmentSelectListItems { get; set; }
+
+        public List<ClassroomScheduleViewModel> ScheduleViewList { get; set; }
 
     }
 }

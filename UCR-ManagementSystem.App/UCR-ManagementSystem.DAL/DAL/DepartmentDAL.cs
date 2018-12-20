@@ -15,8 +15,17 @@ namespace UCR_ManagementSystem.DAL.DAL
         UCRMSystemDbContext db = new UCRMSystemDbContext();
         public bool Add(Department department)
         {
-            db.Departments.Add(department);
-            return db.SaveChanges() > 0;
+            if (db.Departments.FirstOrDefault(c => c.DepartmentName.ToLower().Contains(department.DepartmentName.ToLower())) == null && db.Departments.FirstOrDefault(c => c.DepartmentCode.ToLower().Contains(department.DepartmentCode.ToLower())) == null)
+            {
+                db.Departments.Add(department);
+                return db.SaveChanges() > 0;
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
         public List<Department> GetAll()
         {

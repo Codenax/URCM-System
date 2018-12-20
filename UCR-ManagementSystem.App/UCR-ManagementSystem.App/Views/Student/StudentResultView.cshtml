@@ -22,7 +22,7 @@
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
                     <li class="nav-active">
-                        <a href="dashboard.html">
+                        <a href="~/Dashboard/Dashboard">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <span style="font-weight:bold;">Dashboard</span>
                         </a>
@@ -33,9 +33,8 @@
                             <span style="font-weight:bold;">Department Information</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="saveDepartments.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Departments</a> </li>
-
-                            <li><a href="viewAllDepartments.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View All Departments</a> </li>
+                            <li><a href="~/Department/SaveDepartment" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Departments</a> </li>
+                            <li><a href="~/Department/ShowDepartment" style="font-weight:bold"><i class="fa fa-angle-right"></i>View All Departments</a> </li>
                         </ul>
                     </li>
 
@@ -45,10 +44,10 @@
                             <span style="font-weight:bold;">Course & Teacher Info</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="saveCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
-                            <li><a href="saveTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
-                            <li><a href="courseAssignToTeacher.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
-                            <li><a href="viewCourseStatics.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
+                            <li><a href="~/CourseTeacher/SaveCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Course </a></li>
+                            <li><a href="~/CourseTeacher/saveTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Teacher</a> </li>
+                            <li><a href="~/CourseTeacher/AssignTeacher" style="font-weight:bold"><i class="fa fa-angle-right"></i>Course Assign to Teacher </a>
+                            <li><a href="~/CourseTeacher/viewCourseStatics" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Course Statics</a> </li>
                         </ul>
                     </li>
 
@@ -58,8 +57,8 @@
                             <span style="font-weight:bold;">Class Room & Schedule</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="allocateClassrooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Allocate Classrooms</a></li>
-                            <li><a href="viewClassScheduleRoomAllocationInformation.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
+                            <li><a href="~/ClassRoomSchedule/allocateClassrooms" style="font-weight:bold"><i class="fa fa-angle-right"></i>Allocate Classrooms</a></li>
+                            <li><a href="~/ClassRoomSchedule/viewCourseSchedule" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
                         </ul>
                     </li>
                     <li class="nav-parent">
@@ -68,8 +67,8 @@
                             <span style="font-weight:bold;">Reg-Student & Course-Enroll</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="registerStudent.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
-                            <li><a href="enrollInaCourse.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
+                            <li><a href="~/Student/RegStudent" style="font-weight:bold"><i class="fa fa-angle-right"></i>Register Student</a></li>
+                            <li><a href="~/Student/StudentEnrollInaCourse" style="font-weight:bold"><i class="fa fa-angle-right"></i>Enroll In a Course</a> </li>
                         </ul>
                     </li>
                     <li class="nav-parent nav-expanded nav-active">
@@ -78,8 +77,8 @@
                             <span style="font-weight:bold;">Student Result</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="saveStudentResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
-                            <li class="nav-active"><a href="viewResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
+                            <li><a href="~/Student/SaveStudentResult" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
+                            <li class="nav-active"><a href="~/Student/StudentResultView" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
                         </ul>
                     </li>
                     <li class="nav-parent">
@@ -88,8 +87,8 @@
                             <span style="font-weight:bold;">Unassign & Unallocate</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="unassignAllCourses.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses </a></li>
-                            <li><a href="unallocateAllClassRooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
+                            <li><a href="~/UnassignUnallocate/UnassignCourses" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses</a></li>
+                            <li><a href="~/UnassignUnallocate/UnallocateClassroom" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
                         </ul>
                     </li>
                 </ul>
@@ -109,7 +108,7 @@
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="~/Dashboard/Dashboard">
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
@@ -121,101 +120,91 @@
     </header>
     <!-- start: page ---------///////////////////////--------------------------->
 
-    <div class="row">
+    <div class="row" >
         <div class="col-md-12">
             <form method="POST" id="form" class="form-horizontal">
                 <section class="panel-dark">
                     <div class="row">
                         <div class="col-md-6">
                             <header class="panel-heading" style="background-color: #34495E">
-                                <h2 class="panel-title">Student&ensp;Enroll&ensp;In&ensp;a&ensp;Course</h2> <!--save departments information-->
+                                <h2 class="panel-title">View&ensp;Student&ensp;Result</h2> <!--save departments information-->
                             </header>
                             <div class="panel-body">
-                                    <div class="form-group">
-                                        <div class="col-md-3">
-                                            @Html.LabelFor(c => c.StudentId, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-edit"></i>
-                                                </span>
-                                                @Html.DropDownListFor(c => c.StudentId, Model.RegistrationNumberList, "Select...", new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(c => c.StudentId, null, new { @class = "text-danger" })
-                                            </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        @Html.LabelFor(c => c.StudentId, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-edit"></i>
+                                            </span>
+                                            @Html.DropDownListFor(c => c.StudentId, Model.RegistrationNumberList, "Select...", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(c => c.StudentId, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-3">
-                                            @Html.LabelFor(c => c.StudentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-edit"></i>
-                                                </span>
-                                                @Html.TextBoxFor(c => c.StudentName, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
-                                                @Html.ValidationMessageFor(c => c.StudentName, null, new { @class = "text-danger" })
-                                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        @Html.LabelFor(c => c.StudentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-edit"></i>
+                                            </span>
+                                            @Html.TextBoxFor(c => c.StudentName, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
+                                            @Html.ValidationMessageFor(c => c.StudentName, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-3">
-                                            @Html.LabelFor(c => c.StudentEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-edit"></i>
-                                                </span>
-                                                @Html.TextBoxFor(c => c.StudentEmail, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
-                                                @Html.ValidationMessageFor(c => c.StudentEmail, null, new { @class = "text-danger" })
-                                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        @Html.LabelFor(c => c.StudentEmail, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-edit"></i>
+                                            </span>
+                                            @Html.TextBoxFor(c => c.StudentEmail, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
+                                            @Html.ValidationMessageFor(c => c.StudentEmail, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-3">
-                                            @Html.LabelFor(c => c.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="fa fa-edit"></i>
-                                                </span>
-                                                @Html.TextBoxFor(c => c.DepartmentName, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
-                                                @Html.ValidationMessageFor(c => c.DepartmentName, null, new { @class = "text-danger" })
-                                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-3">
+                                        @Html.LabelFor(c => c.DepartmentName, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-edit"></i>
+                                            </span>
+                                            @Html.TextBoxFor(c => c.DepartmentName, new { @class = "form-control", @readonly = "readonly", placeholder = "---View---" })
+                                            @Html.ValidationMessageFor(c => c.DepartmentName, null, new { @class = "text-danger" })
                                         </div>
                                     </div>
-
-                                <div class="row">
-                                    <footer class="panel-footer" style="background-color: #dfebf7">
-                                        <div class="row">
-                                            <div class="col-sm-12" style="text-align:right">
-                                                <input type="submit" class="btn btn-primary" value="Make PDF" />
-                                            </div>
-                                        </div>
-                                    </footer>
-                                </div> 
-                                
-
+                                </div>
                             </div>
+
+                            <footer class="panel-footer" style="background-color: #dfebf7">
+                                <div class="row">
+                                    <div class="col-sm-12" style="text-align:right">
+                                        <input type="submit" class="btn btn-primary" value="Make PDF" />
+                                    </div>
+                                </div>
+                            </footer>
+
                             <footer class="panel-footer" style="background-color: #34495E"></footer>
                         </div>
-
-
-
-
-
-
-
 
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
                                     <section class="panel-dark">
                                         <header class="panel-heading" style="background-color: #34495E">
-                                            <h6 class="panel-title">Course&ensp;Informations</h6>
+                                            <h6 class="panel-title">Course&ensp;Grade&ensp;Informations</h6>
                                         </header>
                                         <div class="panel-body">
                                             <div class="table-responsive">
@@ -233,14 +222,9 @@
                                         <footer class="panel-footer" style="background-color: #34495E"></footer>
                                     </section>
                                 </div>
-                            </div>  
-                        </div>                   
-                   </div>
-                    @*<div class="row">
-                        <div class="col-md-12">
-                            <footer class="panel-footer" style="background-color: #34495E"></footer>
+                            </div>
                         </div>
-                    </div>*@
+                    </div>
                 </section>
             </form>
         </div>

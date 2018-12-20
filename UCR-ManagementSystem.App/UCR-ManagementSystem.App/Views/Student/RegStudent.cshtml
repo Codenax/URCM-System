@@ -56,8 +56,8 @@
                             <span style="font-weight:bold;">Class Room & Schedule</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="allocateClassrooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Allocate Classrooms</a></li>
-                            <li><a href="viewClassScheduleRoomAllocationInformation.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
+                            <li><a href="~/ClassRoomSchedule/allocateClassrooms" style="font-weight:bold"><i class="fa fa-angle-right"></i>Allocate Classrooms</a></li>
+                            <li><a href="~/ClassRoomSchedule/viewCourseSchedule" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Class Schedule & Room Allocation Information</a> </li>
                         </ul>
                     </li>
                     <li class="nav-parent nav-expanded nav-active">
@@ -76,8 +76,8 @@
                             <span style="font-weight:bold;">Student Result</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="saveStudentResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
-                            <li><a href="viewResult.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
+                            <li><a href="~/Student/SaveStudentResult" style="font-weight:bold"><i class="fa fa-angle-right"></i>Save Student Result </a></li>
+                            <li><a href="~/Student/StudentResultView" style="font-weight:bold"><i class="fa fa-angle-right"></i>View Result</a> </li>
                         </ul>
                     </li>
                     <li class="nav-parent">
@@ -86,8 +86,8 @@
                             <span style="font-weight:bold;">Unassign & Unallocate</span>
                         </a>
                         <ul class="nav nav-children">
-                            <li><a href="unassignAllCourses.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses </a></li>
-                            <li><a href="unallocateAllClassRooms.html" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
+                            <li><a href="~/UnassignUnallocate/UnassignCourses" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unassign All Courses</a></li>
+                            <li><a href="~/UnassignUnallocate/UnallocateClassroom" style="font-weight:bold"><i class="fa fa-angle-right"></i>Unallocate All class Rooms</a> </li>
                         </ul>
                     </li>
                 </ul>
@@ -100,7 +100,7 @@
 </aside>
 <!-- end: sidebar -->
 
-<section role="main" class="content-body">
+<section role="main" class="content-body" style="background-color: #F0FFFF">
     <header class="page-header">
         <h2>Student Registration</h2>
 
@@ -119,7 +119,8 @@
     </header>
     <!-- start: page -////////////////////////////////////--------------------->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             <form method="POST" id="form" class="form-horizontal">
                 <section class="panel-dark">
                     <header class="panel-heading" style="background-color: #34495E">
@@ -160,8 +161,6 @@
                         <div class="form-group">
                             @*<label class="col-sm-2 control-label" style="font-weight:bold">Credit<span class="required">*</span></label>*@
                             @Html.LabelFor(c => c.StudentContactNo, htmlAttributes: new { @class = "control-label col-md-2", style = "font-weight:bold" })
-
-
                             <div class="col-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
@@ -181,7 +180,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-edit"></i>
                                     </span>
-                                    @Html.TextBox("RegData", DateTime.Now.ToString("yyyy-MM-dd"), new { type = "date" })
+                                    @Html.TextBox("RegData", DateTime.Now.ToString("yyyy-MM-dd"), new { @class = "form-control data-plugin-datepicker", type = "date" })
                                     @Html.ValidationMessageFor(c => c.RegData, null, new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -221,8 +220,8 @@
 
                     <footer class="panel-footer" style="background-color: #dfebf7">
                         <div class="row">
-                            <div class="col-sm-3" style="text-align:right">
-                                <input type="submit" class="btn btn-primary" value="Save " />
+                            <div class="col-sm-4" style="text-align:right">
+                                <input type="submit" onclick="myFunction()" class="btn btn-primary" value="Save " id="SubmitButton"/>
                             </div>
                             <div class="col-sm-6">
                                 @if (ViewBag.SMessage != null)

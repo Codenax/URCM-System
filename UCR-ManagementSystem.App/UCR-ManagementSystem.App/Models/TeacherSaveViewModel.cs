@@ -37,7 +37,7 @@ namespace UCR_ManagementSystem.App.Models
 
         [Required(ErrorMessage = "Credit Is Required")]
         [Display(Name = "Credit to be taken")]
-        [Range(1, 100, ErrorMessage = "Input Non-negative Value")]
+        [Range(1, 10000, ErrorMessage = "Input Non-negative Value")]
         public double CreditTaken { get; set; }
 
         public IEnumerable<SelectListItem> DepartmentSelectListItems { get; set; }

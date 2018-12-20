@@ -26,5 +26,7 @@ namespace UCR_ManagementSystem.Models.Models
 
         //[NotMapped]
 
+
+        public bool IsUnassign { get; set; }
     }    
 }

@@ -88,7 +88,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-multiselect.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-timepicker.css" />
+    <Content Include="css\bootstrap-timepicker.min.css" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\datepicker.css" />
     <Content Include="css\datepicker3.css" />
     <Content Include="css\datepicker_d.css" />
@@ -115,6 +119,9 @@
     <Content Include="Scripts\CourseTeacher\ViewSchedul.js" />
     <Content Include="Scripts\CourseTeacher\ViewStudentResult.js" />
     <Content Include="Scripts\Design\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-timepicker.js" />
+    <Content Include="Scripts\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\Design\jquery-1.10.2.min.js" />
     <Content Include="Scripts\examples.dashboard.js" />
     <Content Include="Scripts\gauge.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -225,8 +232,16 @@
     <Content Include="theme\octopus\viewClassScheduleRoomAllocationInformation.html" />
     <Content Include="theme\octopus\viewCourseStatics.html" />
     <Content Include="theme\octopus\viewResult.html" />
+    <Content Include="Views\Dashboard\8_4in.jpg" />
+    <Content Include="Views\Dashboard\beter.tif" />
+    <Content Include="Views\Dashboard\FFF_pic-3.jpg" />
+    <Content Include="Views\Dashboard\Full_s.jpg" />
+    <Content Include="Views\Dashboard\F_pic.jpg" />
+    <Content Include="Views\Dashboard\good.jpg" />
     <Content Include="Views\Shared\logor.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppUtility.cs" />
@@ -236,6 +251,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\UnassignUnallocateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -247,6 +263,7 @@
     <Compile Include="Models\StudentEnrollViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\TeacherSaveViewModel.cs" />
+    <Compile Include="Models\UnAllocatedViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +284,8 @@
     <Content Include="Views\Student\StudentResultView.cshtml" />
     <Content Include="Views\ClassRoomSchedule\allocateClassrooms.cshtml" />
     <Content Include="Views\ClassRoomSchedule\viewCourseSchedule.cshtml" />
+    <Content Include="Views\UnassignUnallocate\UnassignCourses.cshtml" />
+    <Content Include="Views\UnassignUnallocate\UnallocateClassroom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

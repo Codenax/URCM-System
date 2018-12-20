@@ -37,7 +37,7 @@
 
                 $.each(rData, function (k, v) {
 
-                    $("#CourseId").append("<option value='" + v.CourseId + "'>" + v.CourseName + "</option>");
+                    $("#CourseId").append("<option value='" + v.CourseId + "'>" + v.CourseCode + "</option>");
                 });
             }
         }
@@ -88,3 +88,24 @@ $("#CourseId").change(function () {
     });
 });
 
+
+
+
+
+//$("#SubmitButton").click(function () {
+//    function calc() {
+//        var Ct = parseFloat(document.getElementById('CreditTaken').value);
+//        var Rm = parseFloat(document.getElementById('RemainingCredit').value);
+//        var Nct = parseFloat(document.getElementById('AssignCourseCredit').value);
+
+//        var oper = document.getElementById('operators').value;
+
+//        if (Rm < Nct) {
+//            alert("ok");  
+//        }
+//        else{
+//            alert("no");
+//        }
+//    }
+
+//});

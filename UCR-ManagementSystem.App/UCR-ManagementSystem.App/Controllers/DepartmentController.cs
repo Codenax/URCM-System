@@ -31,8 +31,8 @@ namespace UCR_ManagementSystem.App.Controllers
 
         [HttpPost]
         public ActionResult SaveDepartment(Department department)
-        {   
-            var message = "";
+        {
+
                    if (ModelState.IsValid)
                    {
                        bool isSaved = departmentManager.Add(department);
@@ -40,19 +40,21 @@ namespace UCR_ManagementSystem.App.Controllers
                        {
                            
                            ViewBag.SMessage = "Department Information Saved Successfully!";
-                           return View();
+                           ModelState.Clear();
+                           
                        }
                        else
                        {
-                           message = "Department Information Saved Failed";
+                           ViewBag.EMessage = "Name or Code Information Already Exists";
+                           return View();
                        }
                    }
                    else
                    {
-                       message = "Failed";
+                       ViewBag.EMessage = "Information Saved Failed";
                    }
     
-           ViewBag.EMessage = message;
+          
            ModelState.Clear();
            return View();
 

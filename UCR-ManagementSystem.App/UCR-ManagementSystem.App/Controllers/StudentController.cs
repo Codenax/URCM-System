@@ -42,7 +42,7 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpPost]
         public ActionResult RegStudent(Student student)
         {
-            var Fmessage = "";
+            //var Fmessage = "";
 
             if (ModelState.IsValid)
             {
@@ -52,15 +52,16 @@ namespace UCR_ManagementSystem.App.Controllers
                 if (isSavedS)
                 {
                     ViewBag.SMessage = "Student Information Saved Successfully!";
+                    ModelState.Clear();
                 }
                 else
                 {
-                    Fmessage = "Student Information Saved Failed";
+                    ViewBag.FMessage = "Email Id Already Exists";
                 }
             }
             else
             {
-                Fmessage = "Failed";
+                ViewBag.FMessage = "Failed";
             }
 
             var model = new StudentViewModel();
@@ -71,9 +72,17 @@ namespace UCR_ManagementSystem.App.Controllers
                                                     Value = c.Id.ToString(),
                                                     Text = c.DepartmentName
                                                 });
-            ViewBag.FMessage = Fmessage;
+            //ViewBag.FMessage = Fmessage;
             return View(model);
         }
+
+        public JsonResult StudentLastRegInfo()
+        {
+            StudentDAL sDAL = new StudentDAL();
+            var jsonData = sDAL.StudentGetAll().OrderByDescending(p => p.StudentId).FirstOrDefault();
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+   
 
         public JsonResult StudentCountbyDepartmentId(int departmentId)
         {
@@ -126,30 +135,40 @@ namespace UCR_ManagementSystem.App.Controllers
         [HttpPost]
         public ActionResult StudentEnrollInaCourse(StudentEnroll studentEnroll)
         {
-            var FEmessage = "";
-
+            //var FEmessage = "";
+            var model = new StudentEnrollViewModel();
             if (ModelState.IsValid)
             {
                 //var course = Mapper.Map<Course>(model);
-
+                
                 bool isSavedSE = studentManager.Add(studentEnroll);
                 if (isSavedSE)
                 {
+                                      
+                    
+                    model.RegistrationNumberList = studentDAL.StudentGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
+                    model.CoursetSelectListItems = GetDefaultSelectListItem();
                     ViewBag.SEMessage = "Enroll Course Information Saved Successfully!";
+                    ModelState.Clear();
+                    return View(model);
                 }
                 else
                 {
-                    FEmessage = "Enroll Course Information Saved Failed";
+                    
+                    model.RegistrationNumberList = studentDAL.StudentGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
+                    model.CoursetSelectListItems = GetDefaultSelectListItem();
+                    ViewBag.FMessage = "This Student Already Taken This Course";
+                    return View(model);
                 }
             }
             else
             {
-                FEmessage = "Failed";
+                ViewBag.FMessage = "Failed";
             }
-            var model = new StudentEnrollViewModel();
+            //////var model = new StudentEnrollViewModel();
+
             model.RegistrationNumberList = studentDAL.StudentGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
             model.CoursetSelectListItems = GetDefaultSelectListItem();
-            ViewBag.FMessage = FEmessage;
             return View(model);
         }
 
@@ -159,8 +178,11 @@ namespace UCR_ManagementSystem.App.Controllers
         public ActionResult SaveStudentResult()
         {
             var model = new SaveStudentResultViewModel();
-            model.RegistrationNumberList = studentDAL.StudentEnrollListGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.Student.RegistrationNumber });
+
+            var result = studentDAL.StudentEnrollListGetAll().Select(c => new { StudentId = c.StudentId, RegistrationNumber = c.Student.RegistrationNumber }).Distinct().ToList();
+            model.RegistrationNumberList = result.Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
             model.CoursetSelectListItems = GetDefaultSelectListItem();
+            
             return View(model);
         }
         public JsonResult GetStudentByEnrollStudentId(int studentId)
@@ -198,18 +220,22 @@ namespace UCR_ManagementSystem.App.Controllers
                 if (isSavedSSR)
                 {
                     ViewBag.SSRmessage = "Student Result Information Saved Successfully!";
+                    ModelState.Clear();
+
                 }
                 else
                 {
-                    SSFmessage = "Student Result Course Information Saved Failed";
+                    ViewBag.SSFmessage = "This Course Result Already Saved Under This Student";
                 }
             }
             else
             {
-                SSFmessage = "Failed";
+                ViewBag.SSFmessage = "Failed";
             }
             var model = new SaveStudentResultViewModel();
-            model.RegistrationNumberList = studentDAL.StudentEnrollListGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.Student.RegistrationNumber });
+            var result = studentDAL.StudentEnrollListGetAll().Select(c => new { StudentId = c.StudentId, RegistrationNumber = c.Student.RegistrationNumber }).Distinct().ToList();
+
+            model.RegistrationNumberList = result.Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
             model.CoursetSelectListItems = GetDefaultSelectListItem();     
             ViewBag.FMessage = SSFmessage;
             return View(model);
@@ -221,7 +247,8 @@ namespace UCR_ManagementSystem.App.Controllers
         public ActionResult StudentResultView()
         {
             var model = new SaveStudentResultViewModel();
-            model.RegistrationNumberList = studentDAL.SaveStudentResultGetAll().Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.Student.RegistrationNumber });
+            var result = studentDAL.StudentEnrollListGetAll().Select(c => new { StudentId = c.StudentId, RegistrationNumber = c.Student.RegistrationNumber }).Distinct().ToList();
+            model.RegistrationNumberList = result.Select(c => new SelectListItem() { Value = c.StudentId.ToString(), Text = c.RegistrationNumber });
             return View(model);
         }
         public JsonResult GetStudentByResultStudentId(int studentId)
@@ -238,6 +265,7 @@ namespace UCR_ManagementSystem.App.Controllers
                             CourseName = c.CourseName,
                             GradeLatter = s.GradeLetter,
                         };
+
             var dataList = query.Where(c => c.StudentId == studentId).ToList();
             var jsonData = dataList.Select(c => new { c.StudentName, c.StudentEmail, c.DepartmentName,c.CourseCode,c.CourseName,c.GradeLatter});
             return Json(jsonData, JsonRequestBehavior.AllowGet);
