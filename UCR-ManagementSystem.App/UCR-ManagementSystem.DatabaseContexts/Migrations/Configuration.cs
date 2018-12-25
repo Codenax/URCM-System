@@ -10,6 +10,7 @@ namespace UCR_ManagementSystem.DatabaseContexts.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "UCR_ManagementSystem.DatabaseContexts.DatabaseContext.UCRMSystemDbContext";
         }
 
         protected override void Seed(UCR_ManagementSystem.DatabaseContexts.DatabaseContext.UCRMSystemDbContext context)

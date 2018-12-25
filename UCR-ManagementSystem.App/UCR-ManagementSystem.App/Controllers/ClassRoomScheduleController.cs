@@ -123,7 +123,7 @@ namespace UCR_ManagementSystem.App.Controllers
                 Day = n.Day,
                 ToTime = n.ToTime,
                 FromTime = n.FromTime,
-                Schedule = n.RoomNo + ",  " + n.Day + ",  " + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + " - " + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt") + ";" + "\n",
+                Schedule = n.RoomNo + ",  " + n.Day + ",  " + new DateTime(n.FromTime.Ticks).ToString("%h:mm tt") + " - " + new DateTime(n.ToTime.Ticks).ToString("%h:mm tt") + ";<br />",
             });
             var newResult = (from a in Result.ToList()
                              group a by a.CourseId into CourseGroup

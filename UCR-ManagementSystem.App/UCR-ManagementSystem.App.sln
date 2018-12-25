@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCR-ManagementSystem.BLL", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCR-ManagementSystem.DatabaseContexts", "UCR-ManagementSystem.DatabaseContexts\UCR-ManagementSystem.DatabaseContexts.csproj", "{17B61B74-46E1-4E1E-9D50-1F606CE5CD3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticeConsole", "PracticeConsole\PracticeConsole.csproj", "{2E75D166-8581-4B88-8E55-6C839ADDDEEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{17B61B74-46E1-4E1E-9D50-1F606CE5CD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17B61B74-46E1-4E1E-9D50-1F606CE5CD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17B61B74-46E1-4E1E-9D50-1F606CE5CD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E75D166-8581-4B88-8E55-6C839ADDDEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E75D166-8581-4B88-8E55-6C839ADDDEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E75D166-8581-4B88-8E55-6C839ADDDEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E75D166-8581-4B88-8E55-6C839ADDDEEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

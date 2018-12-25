@@ -253,21 +253,40 @@ namespace UCR_ManagementSystem.App.Controllers
         }
         public JsonResult GetStudentByResultStudentId(int studentId)
         {
-            var query = from s in studentDAL.SaveStudentResultGetAll()
-                        join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
-                        select new
-                        {
-                            StudentId = s.StudentId,              
-                            StudentName = s.StudentName,
-                            StudentEmail = s.StudentEmail,
-                            DepartmentName = s.DepartmentName,
-                            CourseCode = c.CourseCode,
-                            CourseName = c.CourseName,
-                            GradeLatter = s.GradeLetter,
-                        };
+            var StudentEnroll = from s in studentDAL.StudentEnrollListGetAll()
+                                join c in courseTeacherDAL.CourseGetAll() on s.CourseId equals c.CourseId
+                                select new
+                                {
+                                    StudentId = s.StudentId,
+                                    StudentName = s.StudentName,
+                                    StudentEmail = s.StudentEmail,
+                                    DepartmentName = s.DepartmentName,
+                                    CourseCode = c.CourseCode,
+                                    CourseName = c.CourseName,
+                                    CourseId = c.CourseId,
+                                };
 
-            var dataList = query.Where(c => c.StudentId == studentId).ToList();
-            var jsonData = dataList.Select(c => new { c.StudentName, c.StudentEmail, c.DepartmentName,c.CourseCode,c.CourseName,c.GradeLatter});
+            var StudentEnrollByStudentId = StudentEnroll.Where(c => c.StudentId == studentId).ToList();
+            var StudentResulByStudentId = studentDAL.SaveStudentResultGetAll().Where(c => c.StudentId == studentId).ToList();
+
+            var dataList = from e in StudentEnrollByStudentId
+                         join d in StudentResulByStudentId
+                         on e.CourseId equals d.CourseId into eGroup
+                         from d in eGroup.DefaultIfEmpty()
+                         select new
+                         {
+                             //StudentId = e.StudentId,
+                             StudentName = e.StudentName,
+                             StudentEmail = e.StudentEmail,
+                             DepartmentName = e.DepartmentName,
+                             //CourseId = e.CourseId,
+                             CourseCode = e.CourseCode,
+                             CourseName = e.CourseName,
+                             GradeLatter = d == null ? "Not  Graded  Yet" : d.GradeLetter
+                         };
+
+            //var dataList = result.Where(c => c.StudentId == studentId).ToList();
+            var jsonData = dataList.Select(c => new { c.StudentName, c.StudentEmail, c.DepartmentName, c.CourseCode, c.CourseName, c.GradeLatter });
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
         ////----------------Student result view End---------------/////
